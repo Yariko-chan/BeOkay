@@ -1,11 +1,13 @@
 package com.gmail.f.d.ganeeva.beokay.ui;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,16 +15,7 @@ import android.widget.Toast;
 
 import com.gmail.f.d.ganeeva.beokay.R;
 
-public class MainActivity extends AppCompatActivity implements
-    DiaryFragment.OnFragmentInteractionListener,
-    ScheduleFragment.OnFragmentInteractionListener,
-    TrainingFragment.OnFragmentInteractionListener,
-    SettingsFragment.OnFragmentInteractionListener{
-
-    public static final String SETTINGS_FRAGMENT_NAME = SettingsFragment.class.getSimpleName();
-    public static final String SCHEDULE_FRAGMENT_NAME = ScheduleFragment.class.getSimpleName();
-    public static final String TRAINING_FRAGMENT_NAME = TrainingFragment.class.getSimpleName();
-    public static final String DIARY_FRAGMENT_NAME = DiaryFragment.class.getSimpleName();
+public class MainActivity extends FragmentActivity {
 
     private BottomNavigationView bottomNavigationView;;
 
@@ -33,14 +26,9 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final FragmentManager fragmentManager = getSupportFragmentManager();
 
-        final FragmentManager fragmentManager = getFragmentManager();
-
-        // define your fragments here
-        final Fragment scheduleFragment = new ScheduleFragment();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.addToBackStack(SCHEDULE_FRAGMENT_NAME)
-            .replace(R.id.container, scheduleFragment).commit();
+        showFragmentFragmentManager (fragmentManager, new ScheduleFragment());
 
         bottomNavigationView = (BottomNavigationView)
             findViewById(R.id.bottom_navigation);
@@ -50,30 +38,23 @@ public class MainActivity extends AppCompatActivity implements
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.action_schedule: {
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction
-                                .replace(R.id.container, scheduleFragment).commit();
+                            backToExitPressedOnce = false;
+                            showFragmentFragmentManager (fragmentManager, new ScheduleFragment());
                             return true;
                         }
                         case R.id.action_diary: {
-                            final Fragment diaryFragment = new DiaryFragment();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction
-                                .replace(R.id.container, diaryFragment).commit();
+                            backToExitPressedOnce = false;
+                            showFragmentFragmentManager (fragmentManager, new DiaryFragment());
                             return true;
                         }
                         case R.id.action_training: {
-                            Fragment trainingFragment = new TrainingFragment();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction
-                                .replace(R.id.container, trainingFragment).commit();
+                            backToExitPressedOnce = false;
+                            showFragmentFragmentManager (fragmentManager, new TrainingFragment());
                             return true;
                         }
                         case R.id.action_settings: {
-                            Fragment sttingsFragment = new SettingsFragment();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction
-                                .replace(R.id.container, sttingsFragment).commit();
+                            backToExitPressedOnce = false;
+                            showFragmentFragmentManager (fragmentManager, new SettingsFragment());
                             return true;
                         }
 
@@ -86,8 +67,6 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onBackPressed() {
         if (backToExitPressedOnce) {
-//                clearBackstack(fragmentManager);
-//                super.onBackPressed(); // second BACK exits app
             this.finish();
         } else {
             Toast.makeText(this, R.string.exit_caution, Toast.LENGTH_SHORT).show();
@@ -95,8 +74,11 @@ public class MainActivity extends AppCompatActivity implements
         };
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-        Toast.makeText(this, uri.toString(), Toast.LENGTH_LONG).show();
+    private void showFragmentFragmentManager (FragmentManager fragmentManager, Fragment fragment) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // here pass animations
+        fragmentTransaction.replace(R.id.container, fragment, fragment.getClass().getName());
+        fragmentTransaction.commit();
     }
 }
