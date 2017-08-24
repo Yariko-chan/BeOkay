@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.gmail.f.d.ganeeva.beokay.ui.DiaryFragment"
+    android:background="@color/colorAccent">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Diary Fragment"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:background="@color/colorPrimary"
+        android:src="@color/colorPrimaryDark"
+        android:visibility="visible"
+        app:elevation="0dp"
+        app:fabSize="normal"/>
+
+</FrameLayout>
