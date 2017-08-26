@@ -1,23 +1,38 @@
 package com.gmail.f.d.ganeeva.beokay.authorization;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.gmail.f.d.ganeeva.beokay.R;
+import com.gmail.f.d.ganeeva.beokay.base.BaseFragment;
+import com.gmail.f.d.ganeeva.beokay.databinding.FragmentLoginBinding;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends BaseFragment {
+    private LoginViewModel loginViewModel;
 
     public LoginFragment() {
         // Required empty public constructor
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        loginViewModel = new LoginViewModel();
+        this.viewModel = loginViewModel; // viewModel.init() in BaseFragment
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        FragmentLoginBinding binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_login, container, false);
+        binding.setAuth(loginViewModel);
+
+        return binding.getRoot();
     }
 
     public static LoginFragment newInstance() {

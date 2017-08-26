@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.gmail.f.d.ganeeva.beokay">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".general.BeOkayApplication"
         android:allowBackup="true"
@@ -12,7 +13,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".general.MainActivity">
         </activity>
-        <activity android:name=".authorization.AuthorizationActivity">
+        <activity android:name=".authorization.AuthorizationActivity"
+                  android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

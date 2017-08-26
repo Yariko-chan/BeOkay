@@ -11,4 +11,6 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="register_tab">Register</string>
     <string name="login_tab">Login</string>
+    <string name="login_btn">Login</string>
+    <string name="register_btn">register</string>
 </resources>

@@ -1,13 +1,68 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.gmail.f.d.ganeeva.beokay.authorization.LoginFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Login"/>
+    <data>
+        <import type="android.view.View"/>
 
-</FrameLayout>
+        <variable
+            name="auth"
+            type="com.gmail.f.d.ganeeva.beokay.authorization.LoginViewModel"/>
+    </data>
+
+    <RelativeLayout
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    tools:context="com.gmail.f.d.ganeeva.beokay.authorization.LoginFragment">
+
+        <EditText
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/password"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:textSize="30sp"
+            android:text="@={auth.login}"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/error"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:ems="30"
+            android:inputType="textPassword"
+            android:textSize="30sp"
+            android:text="@={auth.password}"/>
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/registerButton"
+            android:layout_marginBottom="10dp"
+            android:text="@{auth.error}"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility='@{auth.error == "" ? View.GONE : View.VISIBLE}'/>
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/login_btn"
+            android:textColor="@color/colorTextBackground"
+            android:textSize="30sp"
+            android:onClick="@{() -> auth.login()}"/>
+
+    </RelativeLayout>
+</layout>
+
