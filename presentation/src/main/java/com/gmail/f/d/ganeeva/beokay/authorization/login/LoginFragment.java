@@ -1,4 +1,4 @@
-package com.gmail.f.d.ganeeva.beokay.authorization;
+package com.gmail.f.d.ganeeva.beokay.authorization.login;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        loginViewModel = new LoginViewModel();
+        loginViewModel = new LoginViewModel(getActivity());
         this.viewModel = loginViewModel; // viewModel.init() in BaseFragment
         super.onCreate(savedInstanceState);
     }

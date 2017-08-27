@@ -11,15 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".general.MainActivity">
-        </activity>
+
         <activity android:name=".authorization.AuthorizationActivity"
-                  android:windowSoftInputMode="stateVisible|adjustResize">
+                  android:windowSoftInputMode="stateVisible|adjustResize"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <activity android:name=".general.MainActivity"
+            android:launchMode="singleTask">
         </activity>
     </application>
 

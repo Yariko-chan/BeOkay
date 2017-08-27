@@ -13,4 +13,7 @@
     <string name="login_tab">Login</string>
     <string name="login_btn">Login</string>
     <string name="register_btn">register</string>
+    <string name="msg_incorrect_auth_data">Inappropriate login or password</string>
+    <string name="msg_network_error">Network connection error occured</string>
+    <string name="msg_connection_timed_out">Connection timed out. Try again later</string>
 </resources>

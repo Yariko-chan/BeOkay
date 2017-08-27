@@ -5,7 +5,7 @@
 
         <variable
             name="auth"
-            type="com.gmail.f.d.ganeeva.beokay.authorization.LoginViewModel"/>
+            type="com.gmail.f.d.ganeeva.beokay.authorization.login.LoginViewModel"/>
     </data>
 
     <RelativeLayout
@@ -14,7 +14,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    tools:context="com.gmail.f.d.ganeeva.beokay.authorization.LoginFragment">
+                    tools:context="com.gmail.f.d.ganeeva.beokay.authorization.login.LoginFragment">
 
         <EditText
             android:id="@+id/login"
@@ -44,25 +44,33 @@
             android:id="@+id/error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/registerButton"
+            android:layout_above="@+id/registerButtonHolder"
             android:layout_marginBottom="10dp"
             android:text="@{auth.error}"
             android:textColor="@android:color/holo_red_dark"
             android:visibility='@{auth.error == "" ? View.GONE : View.VISIBLE}'/>
 
-        <Button
-            android:id="@+id/registerButton"
+        <FrameLayout
+            android:id="@+id/registerButtonHolder"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:text="@string/login_btn"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="30sp"
-            android:onClick="@{() -> auth.login()}"/>
-
+            android:layout_marginBottom="10dp">
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"
+                android:text="@string/login_btn"
+                android:textColor="@color/colorTextBackground"
+                android:textSize="30sp"
+                android:onClick="@{() -> auth.login()}"
+                android:visibility="@{auth.isProgress ? View.GONE : View.VISIBLE}"/>
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{auth.isProgress ? View.VISIBLE : View.GONE}"/>
+        </FrameLayout>
     </RelativeLayout>
 </layout>
 
