@@ -5,11 +5,19 @@ import com.gmail.f.d.ganeeva.data.entity.UserDataModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Converter;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -60,5 +68,13 @@ public class RestService {
 
     public Observable<UserDataModel> login(AuthDataModel authData) {
         return restAPI.login(authData);
+    }
+
+    public Observable<UserDataModel> register(UserDataModel userData) {
+        return restAPI.register(userData);
+    }
+
+    public Observable<Response<Void>> recoverPassword(String login) {
+        return restAPI.recoverPassword(login);
     }
 }
