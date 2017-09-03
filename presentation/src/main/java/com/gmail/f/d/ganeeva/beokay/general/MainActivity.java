@@ -1,6 +1,5 @@
 package com.gmail.f.d.ganeeva.beokay.general;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -79,7 +78,7 @@ public class MainActivity extends FragmentActivity {
         if (backToExitPressedOnce) {
             this.finish();
         } else {
-            Toast.makeText(this, R.string.exit_caution, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.msg_exit_caution, Toast.LENGTH_SHORT).show();
             backToExitPressedOnce = true;
         }
     }

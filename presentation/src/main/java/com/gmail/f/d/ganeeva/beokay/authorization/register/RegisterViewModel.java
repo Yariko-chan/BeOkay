@@ -1,18 +1,14 @@
-package com.gmail.f.d.ganeeva.beokay.authorization.login;
+package com.gmail.f.d.ganeeva.beokay.authorization.register;
 
-import android.content.Intent;
+import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import com.gmail.f.d.ganeeva.beokay.R;
-import com.gmail.f.d.ganeeva.beokay.authorization.password_recovery.RecoverPasswordActivity;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
-import com.gmail.f.d.ganeeva.beokay.general.MainActivity;
-import com.gmail.f.d.ganeeva.domain.entity.AuthDomainModel;
 import com.gmail.f.d.ganeeva.domain.entity.UserDomainModel;
-import com.gmail.f.d.ganeeva.domain.interactions.LoginUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.RegisterUseCase;
 
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -22,21 +18,21 @@ import io.reactivex.observers.DisposableObserver;
 import retrofit2.HttpException;
 
 /**
- * Created by Diana on 25.08.2017 at 19:03.
+ * Created by Diana on 27.08.2017 at 19:18.
  */
 
-public class LoginViewModel implements BaseViewModel{
+public class RegisterViewModel implements BaseViewModel {
+    public ObservableField<String> name = new ObservableField<>("");
     public ObservableField<String> login = new ObservableField<>("");
     public ObservableField<String> password = new ObservableField<>("");
     public ObservableField<String> error = new ObservableField<>("");
 
     public ObservableBoolean isProgress = new ObservableBoolean(false);
+    private final Context context;
 
-    private LoginUseCase useCase = new LoginUseCase();
+    private RegisterUseCase useCase = new RegisterUseCase();
 
-    private FragmentActivity context;
-
-    public LoginViewModel(FragmentActivity context) {
+    public RegisterViewModel(Context context) {
         this.context = context;
     }
 
@@ -60,29 +56,27 @@ public class LoginViewModel implements BaseViewModel{
 
     }
 
-    public void login() {
+    public void register() {
         if (login.get().equals("")) {
-            error.set(context.getString(R.string.msg_login_void));
+            error.set("Login not entered");
             return;
         }
         if (password.get().equals("")) {
-            error.set(context.getString(R.string.msg_password_void));
+            error.set("Password not entered");
             return;
         }
 
-
         isProgress.set(true);
-
-        AuthDomainModel auth = new AuthDomainModel(login.get(), password.get());
-        useCase.execute(auth, new DisposableObserver<UserDomainModel>() {
+        UserDomainModel user = new UserDomainModel();
+        user.setEmail(login.get());
+        user.setPassword(password.get());
+        user.setName(name.get());
+        useCase.execute(user, new DisposableObserver<UserDomainModel>() {
             @Override
             public void onNext(@NonNull UserDomainModel userDomainModel) {
-                Bundle b = new Bundle();
-                b.putString("USER_ID", userDomainModel.getId());
-                MainActivity.show(context, b); // put id here?
-                context.finish(); // remove from backstack to avoid returning to login activity
-//                error.set("Authorized");
-//                isProgress.set(false);
+                // TODO: some logic opening activity
+                error.set(userDomainModel.getId());
+                isProgress.set(false);
             }
 
             @Override
@@ -91,8 +85,7 @@ public class LoginViewModel implements BaseViewModel{
 
                 if (e instanceof HttpException) {
                     switch (((HttpException) e).code()) {
-                        case 401 : error.set(context.getString(R.string.msg_incorrect_auth_data)); break;
-                        case 400 : error.set(context.getString(R.string.msg_choose_other_account)); break;
+                        case 409 : error.set(context.getString(R.string.msg_email_already_registered)); break;
                         default: error.set(e.getMessage()); break;
                     }
                 } else if (e instanceof SocketTimeoutException){
@@ -106,13 +99,8 @@ public class LoginViewModel implements BaseViewModel{
 
             @Override
             public void onComplete() {
-                isProgress.set(false);
+
             }
         });
-    }
-
-    public void recover() {
-        Intent intent = new Intent(context, RecoverPasswordActivity.class);
-        context.startActivity(intent);
     }
 }

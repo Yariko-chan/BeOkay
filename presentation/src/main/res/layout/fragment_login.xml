@@ -12,58 +12,63 @@
                     xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
                     tools:context="com.gmail.f.d.ganeeva.beokay.authorization.login.LoginFragment">
 
         <EditText
             android:id="@+id/login"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_above="@+id/password"
+            android:layout_height="40dp"
+            android:layout_above="@+id/email"
             android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:ems="10"
             android:inputType="textEmailAddress"
-            android:textSize="30sp"
+            android:hint="@string/hint_email"
+            android:textSize="20sp"
             android:text="@={auth.login}"/>
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_above="@+id/error"
+            android:layout_height="40dp"
+            android:layout_above="@+id/stayLogged"
             android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:ems="30"
             android:inputType="textPassword"
-            android:textSize="30sp"
+            android:hint="@string/hint_password"
+            android:textSize="20sp"
             android:text="@={auth.password}"/>
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/stayLogged"
+            android:layout_above="@+id/error"
+            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:id="@+id/error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/registerButtonHolder"
+            android:layout_above="@+id/loginButtonHolder"
             android:layout_marginBottom="10dp"
             android:text="@{auth.error}"
             android:textColor="@android:color/holo_red_dark"
             android:visibility='@{auth.error == "" ? View.GONE : View.VISIBLE}'/>
 
         <FrameLayout
-            android:id="@+id/registerButtonHolder"
+            android:id="@+id/loginButtonHolder"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="40dp"
+            android:layout_above="@+id/forgotPassword"
             android:layout_marginBottom="10dp">
             <Button
-                android:id="@+id/registerButton"
+                android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccent"
-                android:text="@string/login_btn"
+                android:text="@string/btn_login"
                 android:textColor="@color/colorTextBackground"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:onClick="@{() -> auth.login()}"
                 android:visibility="@{auth.isProgress ? View.GONE : View.VISIBLE}"/>
             <ProgressBar
@@ -71,6 +76,19 @@
                 android:layout_height="match_parent"
                 android:visibility="@{auth.isProgress ? View.VISIBLE : View.GONE}"/>
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="@string/btn_forgot_password"
+            android:textColor="@android:color/holo_blue_dark"
+            android:gravity="center_horizontal"
+            android:textSize="15dp"
+            android:onClick="@{() -> auth.recover()}"
+            />
     </RelativeLayout>
 </layout>
 

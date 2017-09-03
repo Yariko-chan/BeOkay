@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.authorization.login.LoginFragment;
+import com.gmail.f.d.ganeeva.beokay.authorization.register.RegisterFragment;
 
 class AuthPagerAdapter extends FragmentPagerAdapter {
 

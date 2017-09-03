@@ -1,47 +1,87 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+<layout>
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="user"
+            type="com.gmail.f.d.ganeeva.beokay.authorization.register.RegisterViewModel"/>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    tools:context="com.gmail.f.d.ganeeva.beokay.authorization.login.LoginFragment">
+
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_above="@+id/login"
+            android:layout_marginBottom="10dp"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            android:hint="@string/hint_name"
+            android:text="@={user.name}"/>
+
+        <EditText
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_above="@+id/email"
+            android:layout_marginBottom="10dp"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:hint="@string/hint_email"
+            android:text="@={user.login}"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_above="@+id/error"
+            android:layout_marginBottom="10dp"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+            android:hint="@string/hint_password"
+            android:text="@={user.password}"/>
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/loginButtonHolder"
+            android:layout_marginBottom="10dp"
+            android:text="@{user.error}"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility='@{user.error == "" ? View.GONE : View.VISIBLE}'/>
+
+        <FrameLayout
+            android:id="@+id/loginButtonHolder"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp">
+            <Button
+                android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                tools:context="com.gmail.f.d.ganeeva.beokay.authorization.login.LoginFragment">
+                android:background="@color/colorAccent"
+                android:text="@string/btn_login"
+                android:textColor="@color/colorTextBackground"
+                android:textSize="20sp"
+                android:onClick="@{() -> user.register()}"
+                android:visibility="@{user.isProgress ? View.GONE : View.VISIBLE}"/>
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{user.isProgress ? View.VISIBLE : View.GONE}"/>
+        </FrameLayout>
+
+    </RelativeLayout>
+</layout>
 
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/login"
-        android:layout_marginBottom="10dp"
-        android:inputType="textPersonName"/>
-
-    <EditText
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/password"
-        android:layout_marginBottom="10dp"
-        android:inputType="textEmailAddress"
-        android:textSize="30sp"/>
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/registerButton"
-        android:layout_marginBottom="10dp"
-        android:inputType="textPassword"
-        android:textSize="30sp"/>
-
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorAccent"
-        android:text="@string/register_btn"
-        android:textColor="@color/colorTextBackground"
-        android:textSize="30sp"/>
-
-</RelativeLayout>

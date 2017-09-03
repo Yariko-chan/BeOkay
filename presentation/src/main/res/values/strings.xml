@@ -1,19 +1,26 @@
 <resources>
     <string name="app_name">BeOkay</string>
-    <string name="shedule">Shedule</string>
+    <string name="schedule">Schedule</string>
     <string name="training">Training</string>
     <string name="diary">Diary</string>
     <string name="settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="exit_caution">Tap BACK again to exit</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="msg_exit_caution">Tap BACK again to exit</string>
     <string name="register_tab">Register</string>
     <string name="login_tab">Login</string>
-    <string name="login_btn">Login</string>
+    <string name="btn_login">Login</string>
     <string name="register_btn">register</string>
     <string name="msg_incorrect_auth_data">Inappropriate login or password</string>
     <string name="msg_network_error">Network connection error occured</string>
     <string name="msg_connection_timed_out">Connection timed out. Try again later</string>
+    <string name="hint_name">Name...</string>
+    <string name="hint_email">Email...</string>
+    <string name="hint_password">*******</string>
+    <string name="msg_email_already_registered">This email alreday registered</string>
+    <string name="msg_choose_other_account">Error occured. Please try to log in using other email.</string>
+    <string name="btn_forgot_password"><u>Forgot password?</u></string>
+    <string name="string_enter_email_for_recovery">Enter your email, and we\'ll send you a link so you can reset your password</string>
+    <string name="btn_send_email">Send an email</string>
+    <string name="msg_login_void">Login not entered</string>
+    <string name="msg_password_void">Password not entered</string>
 </resources>

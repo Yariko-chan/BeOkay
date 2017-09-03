@@ -20,7 +20,7 @@ public class AuthorizationActivity extends FragmentActivity {
         viewPager.setAdapter(new AuthPagerAdapter(getSupportFragmentManager(),
             AuthorizationActivity.this));
 
-        // Give the TabLayout the ViewPager
+        // Give the ViewPager to TabLayout
         TabLayout tabLayout = (TabLayout) findViewById(R.id.slidingTabs);
         tabLayout.setupWithViewPager(viewPager);
     }

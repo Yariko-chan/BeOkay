@@ -3,6 +3,7 @@
           package="com.gmail.f.d.ganeeva.beokay">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".general.BeOkayApplication"
         android:allowBackup="true"
@@ -12,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".authorization.AuthorizationActivity"
-                  android:windowSoftInputMode="stateVisible|adjustResize"
-            android:noHistory="true">
+        <activity
+            android:name=".authorization.AuthorizationActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -22,7 +23,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".general.MainActivity"
+        <activity android:name=".authorization.password_recovery.RecoverPasswordActivity"
+                  android:windowSoftInputMode="stateVisible|adjustResize">
+        </activity>
+
+        <activity
+            android:name=".general.MainActivity"
             android:launchMode="singleTask">
         </activity>
     </application>
