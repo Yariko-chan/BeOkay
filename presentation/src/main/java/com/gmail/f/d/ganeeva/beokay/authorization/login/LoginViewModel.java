@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import com.gmail.f.d.ganeeva.beokay.R;
+import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity;
 import com.gmail.f.d.ganeeva.beokay.authorization.password_recovery.RecoverPasswordActivity;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
-import com.gmail.f.d.ganeeva.beokay.general.MainActivity;
+import com.gmail.f.d.ganeeva.beokay.general.Authorization;
+import com.gmail.f.d.ganeeva.beokay.general.HomeActivity;
 import com.gmail.f.d.ganeeva.domain.entity.AuthDomainModel;
 import com.gmail.f.d.ganeeva.domain.entity.UserDomainModel;
 import com.gmail.f.d.ganeeva.domain.interactions.LoginUseCase;
@@ -28,6 +30,7 @@ import retrofit2.HttpException;
 public class LoginViewModel implements BaseViewModel{
     public ObservableField<String> login = new ObservableField<>("");
     public ObservableField<String> password = new ObservableField<>("");
+    public ObservableBoolean stayLogged = new ObservableBoolean();
     public ObservableField<String> error = new ObservableField<>("");
 
     public ObservableBoolean isProgress = new ObservableBoolean(false);
@@ -77,9 +80,12 @@ public class LoginViewModel implements BaseViewModel{
         useCase.execute(auth, new DisposableObserver<UserDomainModel>() {
             @Override
             public void onNext(@NonNull UserDomainModel userDomainModel) {
-                Bundle b = new Bundle();
-                b.putString("USER_ID", userDomainModel.getId());
-                MainActivity.show(context, b); // put id here?
+                // TODO: save user token here
+                Authorization auth = Authorization.getInstance(context);
+                auth.setUserToken(context, userDomainModel.getUserToken());
+                auth.setIsAuthorized(context, true);
+                if (stayLogged.get()) auth.setIsStayLogged(context, true);
+                HomeActivity.show(context); // put id here?
                 context.finish(); // remove from backstack to avoid returning to login activity
 //                error.set("Authorized");
 //                isProgress.set(false);

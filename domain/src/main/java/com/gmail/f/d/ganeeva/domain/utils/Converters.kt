@@ -14,6 +14,7 @@ fun convertUserToDomain(dataModel: UserDataModel): UserDomainModel {
     domainModel.name = dataModel.name
     domainModel.id = dataModel.id
     domainModel.email = dataModel.email
+    domainModel.userToken = dataModel.userToken
     return domainModel
 }
 

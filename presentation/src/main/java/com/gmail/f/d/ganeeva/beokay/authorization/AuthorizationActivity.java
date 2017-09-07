@@ -1,14 +1,23 @@
 package com.gmail.f.d.ganeeva.beokay.authorization;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import com.gmail.f.d.ganeeva.beokay.R;
+import com.gmail.f.d.ganeeva.beokay.general.HomeActivity;
 
 public class AuthorizationActivity extends FragmentActivity {
+
+
+    public static void show(Context context) {
+        Intent intent = new Intent(context, AuthorizationActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

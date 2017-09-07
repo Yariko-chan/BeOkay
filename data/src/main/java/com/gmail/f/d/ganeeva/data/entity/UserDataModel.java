@@ -20,6 +20,17 @@ public class UserDataModel implements DataModel {
     @SerializedName("password")
     private String password;
 
+    @SerializedName("user-token")
+    private String userToken;
+
+    public String getUserToken() {
+        return userToken;
+    }
+
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
+    }
+
     public String getPassword() {
         return password;
     }

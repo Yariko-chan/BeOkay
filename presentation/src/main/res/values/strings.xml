@@ -23,4 +23,5 @@
     <string name="btn_send_email">Send an email</string>
     <string name="msg_login_void">Login not entered</string>
     <string name="msg_password_void">Password not entered</string>
+    <string name="keep_me_logged_in">Keep me logged in</string>
 </resources>

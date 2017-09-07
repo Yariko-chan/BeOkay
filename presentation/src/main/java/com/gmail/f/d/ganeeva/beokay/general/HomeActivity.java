@@ -18,22 +18,21 @@ import com.gmail.f.d.ganeeva.beokay.schedule.ScheduleFragment;
 import com.gmail.f.d.ganeeva.beokay.settings.SettingsFragment;
 import com.gmail.f.d.ganeeva.beokay.training.TrainingFragment;
 
-public class MainActivity extends FragmentActivity {
+public class HomeActivity extends FragmentActivity {
 
     private BottomNavigationView bottomNavigationView;
 
     private boolean backToExitPressedOnce = false;
 
-    public static void show (Context context, Bundle args) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtras(args);
+    public static void show (Context context) {
+        Intent intent = new Intent(context, HomeActivity.class);
         context.startActivity(intent);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 

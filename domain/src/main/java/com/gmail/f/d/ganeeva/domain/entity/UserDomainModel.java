@@ -2,6 +2,8 @@ package com.gmail.f.d.ganeeva.domain.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Created by Diana on 25.08.2017 at 18:12.
  */
@@ -12,6 +14,15 @@ public class UserDomainModel implements DomainModel {
     private String email;
     private String id;
     private String password;
+    private String userToken;
+
+    public String getUserToken() {
+        return userToken;
+    }
+
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
+    }
 
     public String getPassword() {
         return password;
