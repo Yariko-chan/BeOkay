@@ -36,7 +36,7 @@ public class HomeActivity extends FragmentActivity {
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
-        showFragmentFragmentManager (fragmentManager, new ScheduleFragment());
+        showFragment(fragmentManager, new ScheduleFragment());
 
         bottomNavigationView = (BottomNavigationView)
             findViewById(R.id.bottom_navigation);
@@ -47,22 +47,22 @@ public class HomeActivity extends FragmentActivity {
                     switch (item.getItemId()) {
                         case R.id.action_schedule: {
                             backToExitPressedOnce = false;
-                            showFragmentFragmentManager (fragmentManager, new ScheduleFragment());
+                            showFragment(fragmentManager, new ScheduleFragment());
                             return true;
                         }
                         case R.id.action_diary: {
                             backToExitPressedOnce = false;
-                            showFragmentFragmentManager (fragmentManager, new DiaryFragment());
+                            showFragment(fragmentManager, new DiaryFragment());
                             return true;
                         }
                         case R.id.action_training: {
                             backToExitPressedOnce = false;
-                            showFragmentFragmentManager (fragmentManager, new TrainingFragment());
+                            showFragment(fragmentManager, new TrainingFragment());
                             return true;
                         }
                         case R.id.action_settings: {
                             backToExitPressedOnce = false;
-                            showFragmentFragmentManager (fragmentManager, new SettingsFragment());
+                            showFragment(fragmentManager, new SettingsFragment());
                             return true;
                         }
 
@@ -82,7 +82,7 @@ public class HomeActivity extends FragmentActivity {
         }
     }
 
-    private void showFragmentFragmentManager (FragmentManager fragmentManager, Fragment fragment) {
+    private void showFragment(FragmentManager fragmentManager, Fragment fragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         // here pass animations

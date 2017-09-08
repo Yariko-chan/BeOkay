@@ -11,17 +11,19 @@
     <string name="btn_login">Login</string>
     <string name="register_btn">register</string>
     <string name="msg_incorrect_auth_data">Inappropriate login or password</string>
-    <string name="msg_network_error">Network connection error occured</string>
+    <string name="msg_network_error">Network connection error occurred</string>
     <string name="msg_connection_timed_out">Connection timed out. Try again later</string>
-    <string name="hint_name">Name...</string>
-    <string name="hint_email">Email...</string>
+    <string name="hint_name">Name…</string>
+    <string name="hint_email">Email…</string>
     <string name="hint_password">*******</string>
     <string name="msg_email_already_registered">This email alreday registered</string>
-    <string name="msg_choose_other_account">Error occured. Please try to log in using other email.</string>
+    <string name="msg_choose_other_account">Error occurred. Please try to log in using other email.</string>
     <string name="btn_forgot_password"><u>Forgot password?</u></string>
     <string name="string_enter_email_for_recovery">Enter your email, and we\'ll send you a link so you can reset your password</string>
     <string name="btn_send_email">Send an email</string>
     <string name="msg_login_void">Login not entered</string>
     <string name="msg_password_void">Password not entered</string>
     <string name="keep_me_logged_in">Keep me logged in</string>
+    <string name="settings_logout">Log out</string>
+    <string name="settings_saved_email_key">Saved_email</string>
 </resources>

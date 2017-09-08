@@ -1,9 +1,11 @@
 package com.gmail.f.d.ganeeva.beokay.authorization.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 
 import com.gmail.f.d.ganeeva.beokay.R;
@@ -23,10 +25,6 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import retrofit2.HttpException;
 
-/**
- * Created by Diana on 25.08.2017 at 19:03.
- */
-
 public class LoginViewModel implements BaseViewModel{
     public ObservableField<String> login = new ObservableField<>("");
     public ObservableField<String> password = new ObservableField<>("");
@@ -39,13 +37,20 @@ public class LoginViewModel implements BaseViewModel{
 
     private FragmentActivity context;
 
-    public LoginViewModel(FragmentActivity context) {
+    LoginViewModel(FragmentActivity context) {
         this.context = context;
     }
 
     @Override
     public void init() {
+        // set saved value for "stay logged"
+        Authorization auth = Authorization.getInstance(context);
+        stayLogged.set(auth.isStayLogged());
 
+        // set saved login
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        String email = pref.getString(context.getResources().getString(R.string.settings_saved_email_key), "");
+        login.set(email);
     }
 
     @Override
@@ -60,6 +65,15 @@ public class LoginViewModel implements BaseViewModel{
 
     @Override
     public void pause() {
+        // save auth settings
+        Authorization auth = Authorization.getInstance(context);
+        auth.setIsStayLogged(context, stayLogged.get());
+
+        // save login to settings
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        sharedPref.edit()
+            .putString(context.getResources().getString(R.string.settings_saved_email_key), login.get())
+            .apply();
 
     }
 
@@ -80,15 +94,17 @@ public class LoginViewModel implements BaseViewModel{
         useCase.execute(auth, new DisposableObserver<UserDomainModel>() {
             @Override
             public void onNext(@NonNull UserDomainModel userDomainModel) {
-                // TODO: save user token here
+
+                // save user token
                 Authorization auth = Authorization.getInstance(context);
                 auth.setUserToken(context, userDomainModel.getUserToken());
+
+                // save auth settings
                 auth.setIsAuthorized(context, true);
-                if (stayLogged.get()) auth.setIsStayLogged(context, true);
+
+                // show app
                 HomeActivity.show(context); // put id here?
                 context.finish(); // remove from backstack to avoid returning to login activity
-//                error.set("Authorized");
-//                isProgress.set(false);
             }
 
             @Override

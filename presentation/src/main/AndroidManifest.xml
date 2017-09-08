@@ -22,7 +22,8 @@
         </activity>
         <activity
             android:name=".authorization.AuthorizationActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize">
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:launchMode="singleTask">
         </activity>
         <activity
             android:name=".authorization.password_recovery.RecoverPasswordActivity"
@@ -30,7 +31,8 @@
         </activity>
         <activity
             android:name=".general.HomeActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:noHistory="true">
         </activity>
     </application>
 
