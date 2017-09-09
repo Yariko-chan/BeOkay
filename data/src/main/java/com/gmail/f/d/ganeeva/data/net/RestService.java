@@ -77,4 +77,8 @@ public class RestService {
     public Observable<Response<Void>> recoverPassword(String login) {
         return restAPI.recoverPassword(login);
     }
+
+    public Observable<Boolean> validateLogin(String userToken) {
+        return restAPI.validateLogin(userToken);
+    }
 }

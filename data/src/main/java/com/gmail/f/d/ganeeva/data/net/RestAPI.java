@@ -25,4 +25,7 @@ public interface RestAPI {
 
     @GET("users/restorepassword/{identity}")
     Observable<Response<Void>> recoverPassword(@Path("identity") String login);
+
+    @GET("users/isvalidusertoken/{userToken}")
+    Observable<Boolean> validateLogin(@Path("userToken") String userToken);
 }
