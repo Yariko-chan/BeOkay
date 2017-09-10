@@ -16,10 +16,10 @@ public class Authorization {
     private static final String IS_SAVELOCALLY_ONLY_KEY = "IS_SAVELOCALLY_ONLY_KEY";
     private static final String USER_TOKEN_KEY = "USER_TOKEN_KEY";
 
-    private boolean isAuthorized = false;
-    private boolean isStayLogged = false;
-    private boolean isSaveLocallyOnly = false;
-    private String userToken = "";
+    private boolean isAuthorized = false;// changes after: login, logout; unsuccessful login; unsuccessful validating by token
+    private boolean isStayLogged = false;// changes after: change only by checkbox
+    private boolean isSaveLocallyOnly = false;// changes after: - todo later
+    private String userToken = "";//  changes after: login; ; unsuccessful login; logout; TODO after validating? .
 
     private static Authorization instance;
 
@@ -59,6 +59,14 @@ public class Authorization {
 
     public boolean isSaveLocallyOnly() {
         return isSaveLocallyOnly;
+    }
+
+    public void cleanToken(Context context) {
+        this.userToken = "";
+        SharedPreferences pref = context.getSharedPreferences(AUTH_SHARED_PREFS, Context.MODE_PRIVATE);
+        pref.edit()
+            .putString(USER_TOKEN_KEY, "")
+            .apply();
     }
 
     public void setUserToken(Context context, String userToken) {

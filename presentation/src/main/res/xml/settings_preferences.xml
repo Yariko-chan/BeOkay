@@ -3,8 +3,5 @@
     <com.gmail.f.d.ganeeva.beokay.settings.DefaultValuePreference
         android:key="@string/settings_saved_email_key"
         android:title="@string/settings_logout">
-        <intent android:action="android.intent.action.VIEW"
-                android:targetPackage="com.gmail.f.d.ganeeva.beokay"
-                android:targetClass="com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity" />
     </com.gmail.f.d.ganeeva.beokay.settings.DefaultValuePreference>
 </PreferenceScreen>

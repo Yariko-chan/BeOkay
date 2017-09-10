@@ -111,6 +111,13 @@ public class LoginViewModel implements BaseViewModel{
             public void onError(@NonNull Throwable e) {
                 isProgress.set(false);
 
+                // clean user token
+                Authorization auth = Authorization.getInstance(context);
+                auth.cleanToken(context);
+
+                // save auth settings
+                auth.setIsAuthorized(context, false);
+
                 if (e instanceof HttpException) {
                     switch (((HttpException) e).code()) {
                         case 401 : error.set(context.getString(R.string.msg_incorrect_auth_data)); break;
