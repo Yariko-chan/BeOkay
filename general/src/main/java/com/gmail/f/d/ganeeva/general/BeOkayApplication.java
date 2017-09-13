@@ -1,10 +1,15 @@
-package com.gmail.f.d.ganeeva.beokay.general;
+package com.gmail.f.d.ganeeva.general;
 
 import android.app.Application;
 
+import com.gmail.f.d.ganeeva.general.di.AppComponent;
+import com.gmail.f.d.ganeeva.general.di.AppModule;
+import com.gmail.f.d.ganeeva.general.di.DaggerAppComponent;
 import com.squareup.leakcanary.LeakCanary;
 
 public class BeOkayApplication extends Application {
+
+    public static AppComponent appComponent;
 
     @Override public void onCreate() {
         super.onCreate();
@@ -14,6 +19,9 @@ public class BeOkayApplication extends Application {
             return;
         }
         LeakCanary.install(this);
-        // Normal app init code...
+
+        appComponent = DaggerAppComponent.builder()
+            .appModule(new AppModule())
+            .build();
     }
 }

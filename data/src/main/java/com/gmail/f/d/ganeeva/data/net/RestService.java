@@ -10,6 +10,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
@@ -28,15 +30,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestService {
     public static final String BASE_URL = "https://api.backendless.com/A37125EB-0082-7D66-FF25-929133695B00/4403AEBD-3897-3B7A-FF2B-35CDD8DE1200/";
-    private static RestService instance = new RestService();
+    private static RestService instance;
 
     private RestAPI restAPI;
+
+    @Inject
+    private HttpLoggingInterceptor logging;
 
     private RestService() {
         init();
     }
 
     public static RestService getInstance() {
+        if (null == instance) {
+            instance = new RestService();
+//            BeOkayApplication.appComponent.build();
+        }
         return instance;
     }
 
@@ -45,7 +54,7 @@ public class RestService {
      */
     public void init() {
         // замена HttpConnection с плюшками. низкоуровневое взаимодействие с интернетом. Тут можно логирование и ввсякие настройки
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(10, TimeUnit.SECONDS) // ограничение чтобы польхователь не ждал полчаса
