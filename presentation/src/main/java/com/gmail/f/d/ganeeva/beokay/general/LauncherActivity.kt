@@ -5,16 +5,22 @@ import android.os.Bundle
 
 import com.gmail.f.d.ganeeva.beokay.R
 import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity
-import com.gmail.f.d.ganeeva.domain.interactions.ValidateLogin
+import com.gmail.f.d.ganeeva.domain.interactions.ValidateLoginUseCase
 
 import io.reactivex.annotations.NonNull
 import io.reactivex.observers.DisposableObserver
+import javax.inject.Inject
 
 class LauncherActivity : Activity() {
+
+
+    @Inject lateinit var useCase: ValidateLoginUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launcher)
+
+        BeOkayApplication.appComponent.inject(this)
 
         val auth = Authorization.getInstance(this)
         if (auth.isSaveLocallyOnly) {
@@ -33,7 +39,7 @@ class LauncherActivity : Activity() {
             return
         }
 
-        ValidateLogin().execute(token, object : DisposableObserver<Boolean>() {
+        useCase.execute(token, object : DisposableObserver<Boolean>() {
             override fun onNext(valid: Boolean) {
                 if (valid) {
                     goHomeActivity()

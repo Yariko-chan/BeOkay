@@ -6,12 +6,16 @@ import android.databinding.ObservableField;
 import android.support.v4.app.FragmentActivity;
 
 import com.gmail.f.d.ganeeva.beokay.R;
+import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
+import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.domain.entity.UserDomainModel;
 import com.gmail.f.d.ganeeva.domain.interactions.RegisterUseCase;
 
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+
+import javax.inject.Inject;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
@@ -28,17 +32,17 @@ public class RegisterViewModel implements BaseViewModel {
     public ObservableField<String> error = new ObservableField<>("");
 
     public ObservableBoolean isProgress = new ObservableBoolean(false);
-    private final Context context;
+    private final AuthorizationActivity context;
 
-    private RegisterUseCase useCase = new RegisterUseCase();
+    @Inject RegisterUseCase useCase;
 
-    public RegisterViewModel(Context context) {
+    public RegisterViewModel(AuthorizationActivity context) {
         this.context = context;
     }
 
     @Override
     public void init() {
-
+        BeOkayApplication.appComponent.inject(this);
     }
 
     @Override

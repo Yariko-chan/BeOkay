@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gmail.f.d.ganeeva.beokay.R;
+import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity;
 import com.gmail.f.d.ganeeva.beokay.base.BaseFragment;
 import com.gmail.f.d.ganeeva.beokay.databinding.FragmentRegisterBinding;
 
@@ -17,7 +18,8 @@ public class RegisterFragment extends BaseFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        registerViewModel = new RegisterViewModel(getActivity());
+        AuthorizationActivity activity = (AuthorizationActivity) getActivity();
+        registerViewModel = new RegisterViewModel(activity);
         this.viewModel = registerViewModel;
         super.onCreate(savedInstanceState);
     }

@@ -15,23 +15,13 @@ import com.gmail.f.d.ganeeva.domain.utils.convertUserToDomain
  * Created by Diana on 25.08.2017 at 18:09.
  */
 
-class LoginUseCase : UseCase<AuthDomainModel, UserDomainModel>() {
+class LoginUseCase(internal var restService: RestService) : UseCase<AuthDomainModel, UserDomainModel>() {
+
     override fun buildUseCase(authDomainModel: AuthDomainModel): Observable<UserDomainModel>? {
-        return RestService.getInstance()
+        return restService
                 .login(convertAuthToData(authDomainModel))
                 .map({data:UserDataModel -> convertUserToDomain(data)})
     }
-//    var domainModel = RestService.getInstance()
-//            .login(convertAuthToData(authDomainModel))
-//            .map({
-//                data:UserDataModel ->
-//                if (data.errorMessage == null || data.errorMessage.equals("")) // if no error, return as usual
-//                    convertUserToDomain(data)
-//                else { // else throw an Error passed by Backendless
-//                    throw convertUserToError(data) // this should be catched in onError
-//                }
-//            })
-//    return domainModel
 
 
 }

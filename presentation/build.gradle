@@ -30,7 +30,7 @@ dependencies {
     })
 
     compile project(path: ':domain')
-    compile project(path: ':general')
+    compile project(path: ':data')
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
@@ -44,4 +44,7 @@ dependencies {
     annotationProcessor 'com.android.databinding:compiler:2.3.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
     testCompile 'junit:junit:4.12'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 }

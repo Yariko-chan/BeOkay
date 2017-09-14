@@ -1,10 +1,11 @@
-package com.gmail.f.d.ganeeva.general;
+package com.gmail.f.d.ganeeva.beokay.general;
 
 import android.app.Application;
 
-import com.gmail.f.d.ganeeva.general.di.AppComponent;
-import com.gmail.f.d.ganeeva.general.di.AppModule;
-import com.gmail.f.d.ganeeva.general.di.DaggerAppComponent;
+import com.gmail.f.d.ganeeva.beokay.general.di.AppComponent;
+import com.gmail.f.d.ganeeva.beokay.general.di.DaggerAppComponent;
+import com.gmail.f.d.ganeeva.beokay.general.di.modules.RestModule;
+import com.gmail.f.d.ganeeva.beokay.general.di.modules.UseCaseModule;
 import com.squareup.leakcanary.LeakCanary;
 
 public class BeOkayApplication extends Application {
@@ -21,7 +22,8 @@ public class BeOkayApplication extends Application {
         LeakCanary.install(this);
 
         appComponent = DaggerAppComponent.builder()
-            .appModule(new AppModule())
+            .restModule(new RestModule())
+            .useCaseModule(new UseCaseModule())
             .build();
     }
 }

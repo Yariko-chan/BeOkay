@@ -10,9 +10,10 @@ import retrofit2.Response
  * Created by Diana on 29.08.2017 at 11:32.
  */
 
-class RecoverPasswordUseCase : UseCase<String, Response<Void>>() {
+class RecoverPasswordUseCase(internal var restService: RestService) : UseCase<String, Response<Void>>() {
+
     override fun buildUseCase(s: String): Observable<Response<Void>> {
-        return RestService.getInstance()
+        return restService
                 .recoverPassword(s)
     }
 }

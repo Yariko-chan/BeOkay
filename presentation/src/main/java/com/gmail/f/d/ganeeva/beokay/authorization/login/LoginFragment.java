@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gmail.f.d.ganeeva.beokay.R;
+import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity;
 import com.gmail.f.d.ganeeva.beokay.base.BaseFragment;
 import com.gmail.f.d.ganeeva.beokay.databinding.FragmentLoginBinding;
 
@@ -16,7 +17,8 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        loginViewModel = new LoginViewModel(getActivity());
+        AuthorizationActivity activity = (AuthorizationActivity) getActivity();
+        loginViewModel = new LoginViewModel(activity);
         this.viewModel = loginViewModel; // viewModel.init() in BaseFragment
         super.onCreate(savedInstanceState);
     }

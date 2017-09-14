@@ -13,6 +13,7 @@ import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity;
 import com.gmail.f.d.ganeeva.beokay.authorization.password_recovery.RecoverPasswordActivity;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
 import com.gmail.f.d.ganeeva.beokay.general.Authorization;
+import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.beokay.general.HomeActivity;
 import com.gmail.f.d.ganeeva.domain.entity.AuthDomainModel;
 import com.gmail.f.d.ganeeva.domain.entity.UserDomainModel;
@@ -20,6 +21,8 @@ import com.gmail.f.d.ganeeva.domain.interactions.LoginUseCase;
 
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+
+import javax.inject.Inject;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
@@ -33,16 +36,18 @@ public class LoginViewModel implements BaseViewModel{
 
     public ObservableBoolean isProgress = new ObservableBoolean(false);
 
-    private LoginUseCase useCase = new LoginUseCase();
+    @Inject public LoginUseCase useCase;
 
-    private FragmentActivity context;
+    private AuthorizationActivity context;
 
-    LoginViewModel(FragmentActivity context) {
+    LoginViewModel(AuthorizationActivity context) {
         this.context = context;
     }
 
     @Override
     public void init() {
+        BeOkayApplication.appComponent.inject(this);
+
         // set saved value for "stay logged"
         Authorization auth = Authorization.getInstance(context);
         stayLogged.set(auth.isStayLogged());

@@ -8,7 +8,10 @@ import android.widget.Toast;
 
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
+import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.domain.interactions.RecoverPasswordUseCase;
+
+import javax.inject.Inject;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
@@ -28,7 +31,7 @@ public class RecoverPasswordViewModel implements BaseViewModel {
 
     private RecoverPasswordActivity context;
 
-    private RecoverPasswordUseCase useCase = new RecoverPasswordUseCase();
+    @Inject RecoverPasswordUseCase useCase;
 
     public RecoverPasswordViewModel(RecoverPasswordActivity context) {
         this.context = context;
@@ -36,7 +39,7 @@ public class RecoverPasswordViewModel implements BaseViewModel {
 
     @Override
     public void init() {
-
+        BeOkayApplication.appComponent.inject(this);
     }
 
     @Override
