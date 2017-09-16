@@ -49,15 +49,6 @@ public class DiaryFragment extends Fragment {
             public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
                 View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_diary_entry, parent, false);
-//                ImageButton btn = (ImageButton) v.findViewById(R.id.showMore);
-//                btn.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        View view = v.getRootView();
-//                        ExpandableRelativeLayout layout = (ExpandableRelativeLayout) view.findViewById(R.id.expandable);
-//                        layout.toggle();
-//                    }
-//                });
 //                // set the view's size, margins, paddings and layout parameters
                 Holder vh = new Holder(v);
                 return vh;
