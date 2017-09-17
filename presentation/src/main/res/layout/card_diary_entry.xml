@@ -10,8 +10,8 @@
     <com.gmail.f.d.ganeeva.beokay.diary.DiaryEntry
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:date=""
-        app:items=''
+        app:date="16/09/2017"
+        app:items='["123", "456", "789", "000", "777", "666", "555"]'
         tools:date="16/09/2017"
         tools:items='["123", "456", "789", "000", "777", "666", "555"]'
         />

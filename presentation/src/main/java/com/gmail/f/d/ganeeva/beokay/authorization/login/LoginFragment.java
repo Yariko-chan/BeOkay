@@ -13,13 +13,9 @@ import com.gmail.f.d.ganeeva.beokay.base.BaseFragment;
 import com.gmail.f.d.ganeeva.beokay.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends BaseFragment {
-    private LoginViewModel loginViewModel;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        AuthorizationActivity activity = (AuthorizationActivity) getActivity();
-        loginViewModel = new LoginViewModel(activity);
-        this.viewModel = loginViewModel; // viewModel.init() in BaseFragment
+    public void onCreate(@Nullable Bundle savedInstanceState) { // viewModel.init() in BaseFragment
         super.onCreate(savedInstanceState);
     }
 
@@ -30,10 +26,14 @@ public class LoginFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        AuthorizationActivity activity = (AuthorizationActivity) getActivity();
+        LoginViewModel loginViewModel = new LoginViewModel(activity);
+        this.viewModel = loginViewModel;
         FragmentLoginBinding binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_login, container, false);
         binding.setAuth(loginViewModel);
 
+        super.onCreateView(inflater, container, savedInstanceState);
         return binding.getRoot();
     }
 

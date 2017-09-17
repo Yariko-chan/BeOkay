@@ -17,23 +17,23 @@
         android:text=""
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        style="@style/DiaryEntryDate"/>
+        style="@style/DiaryEntryDateText"/>
 
     <TextView
         android:id="@+id/goodness1"
         android:layout_below="@id/dateTextView"
         android:text=""
-        style="@style/DiaryEntryItem"/>
+        style="@style/DiaryEntryItemText"/>
     <TextView
         android:id="@+id/goodness2"
         android:layout_below="@id/goodness1"
         android:text=""
-        style="@style/DiaryEntryItem"/>
+        style="@style/DiaryEntryItemText"/>
     <TextView
         android:id="@+id/goodness3"
         android:layout_below="@id/goodness2"
         android:text=""
-        style="@style/DiaryEntryItem"/>
+        style="@style/DiaryEntryItemText"/>
 
     <com.github.aakira.expandablelayout.ExpandableRelativeLayout
         android:layout_width="match_parent"
@@ -48,38 +48,38 @@
 
         <TextView
             android:id="@+id/goodness4"
-            style="@style/DiaryEntryItem"
+            style="@style/DiaryEntryItemText"
             android:text=""/>
         <TextView
             android:id="@+id/goodness5"
             android:layout_below="@id/goodness4"
             android:text=""
-            style="@style/DiaryEntryItem"/>
+            style="@style/DiaryEntryItemText"/>
         <TextView
             android:id="@+id/goodness6"
             android:layout_below="@id/goodness5"
             android:text=""
-            style="@style/DiaryEntryItem"/>
+            style="@style/DiaryEntryItemText"/>
         <TextView
             android:id="@+id/goodness7"
             android:layout_below="@id/goodness6"
             android:text=""
-            style="@style/DiaryEntryItem"/>
+            style="@style/DiaryEntryItemText"/>
         <TextView
             android:id="@+id/goodness8"
             android:layout_below="@id/goodness7"
             android:text=""
-            style="@style/DiaryEntryItem"/>
+            style="@style/DiaryEntryItemText"/>
         <TextView
             android:id="@+id/goodness9"
             android:layout_below="@id/goodness8"
             android:text=""
-            style="@style/DiaryEntryItem"/>
+            style="@style/DiaryEntryItemText"/>
         <TextView
             android:id="@+id/goodness10"
             android:layout_below="@id/goodness9"
             android:text=""
-            style="@style/DiaryEntryItem"/>
+            style="@style/DiaryEntryItemText"/>
 
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 

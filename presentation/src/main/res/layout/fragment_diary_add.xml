@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryViewModel"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/colorIcons"
+                  android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:id="@+id/toolbar">
+        </android.support.v7.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/CommonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/tell_why_you_good_today"/>
+
+                <EditText
+                    android:id="@+id/item1"
+                    android:layout_below="@+id/textView3"
+                    style="@style/AddDiaryEntryItemEditText"/>
+
+                <EditText
+                    android:id="@+id/item2"
+                    android:layout_below="@+id/item1"
+                    style="@style/AddDiaryEntryItemEditText"/>
+
+                <EditText
+                    android:id="@+id/item3"
+                    android:layout_below="@+id/item2"
+                    style="@style/AddDiaryEntryItemEditText"/>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/item4_expandable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/item3"
+                    app:ael_duration="500"
+                    app:ael_expanded="true"
+                    app:ael_interpolator="fastOutSlowIn"
+                    app:ael_orientation="vertical">
+                    <EditText
+                        android:id="@+id/item4"
+                        style="@style/AddDiaryEntryItemEditText"/>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/item5_expandable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item4_expandable"
+                    app:ael_duration="500"
+                    app:ael_expanded="true"
+                    app:ael_interpolator="fastOutSlowIn"
+                    app:ael_orientation="vertical">
+                    <EditText
+                        android:id="@+id/item5"
+                        style="@style/AddDiaryEntryItemEditText"/>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/item6_expandable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/item5_expandable"
+                    app:ael_duration="500"
+                    app:ael_expanded="true"
+                    app:ael_interpolator="fastOutSlowIn"
+                    app:ael_orientation="vertical">
+                    <EditText
+                        android:id="@+id/item6"
+                        style="@style/AddDiaryEntryItemEditText"/>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/item7_expandable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/item6_expandable"
+                    app:ael_duration="500"
+                    app:ael_expanded="true"
+                    app:ael_interpolator="fastOutSlowIn"
+                    app:ael_orientation="vertical">
+                    <EditText
+                        android:id="@+id/item7"
+                        style="@style/AddDiaryEntryItemEditText"/>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/item8_expandable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item7_expandable"
+                    app:ael_duration="500"
+                    app:ael_expanded="true"
+                    app:ael_interpolator="fastOutSlowIn"
+                    app:ael_orientation="vertical">
+                    <EditText
+                        android:id="@+id/item8"
+                        style="@style/AddDiaryEntryItemEditText"/>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/item9_expandable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/item8_expandable"
+                    app:ael_duration="500"
+                    app:ael_expanded="true"
+                    app:ael_interpolator="fastOutSlowIn"
+                    app:ael_orientation="vertical">
+                    <EditText
+                        android:id="@+id/item9"
+                        style="@style/AddDiaryEntryItemEditText"/>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/item10_expandable"
+                    android:layout_below="@+id/item9_expandable"
+                    style="@style/ExpandableItem">
+                    <EditText
+                        android:id="@+id/item10"
+                        style="@style/AddDiaryEntryItemEditText"/>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                <Button
+                    android:id="@+id/addItemFromDrafts"
+                    android:text="@string/open_diary_items_drafts"
+                    style="@style/FlatButton"
+                    android:layout_below="@id/item10_expandable"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"/>
+
+                <ImageButton
+                    android:id="@+id/removeItemButton"
+                    android:src="@drawable/ic_remove_item"
+                    android:layout_below="@id/item10_expandable"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@+id/addItemButton"
+                    android:layout_marginLeft="10dp"
+                    style="@style/FlatImageButton"
+                    android:visibility="invisible"
+                    android:enabled="false"/>
+
+                <ImageButton
+                    android:id="@+id/addItemButton"
+                    android:src="@drawable/ic_add_item"
+                    android:layout_below="@id/item10_expandable"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    style="@style/FlatImageButton"/>
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

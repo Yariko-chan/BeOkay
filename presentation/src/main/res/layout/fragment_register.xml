@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccent"
-                android:text="@string/btn_login"
+                android:text="@string/btn_register"
                 android:textColor="@color/colorTextWhite"
                 android:textSize="20sp"
                 android:onClick="@{() -> user.register()}"

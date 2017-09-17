@@ -2,16 +2,16 @@ package com.gmail.f.d.ganeeva.beokay.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by Diana on 24.08.2017 at 17:07.
+ * Created by Diana on 17.09.2017 at 9:38.
  */
 
-public abstract class BaseFragment extends Fragment {
+public class BaseDialogFragment extends DialogFragment {
 
     protected BaseViewModel viewModel; // protected to make it visible for childs
 
@@ -44,5 +44,4 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
         viewModel.release();
     }
-
 }

@@ -3,7 +3,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.gmail.f.d.ganeeva.beokay.diary.DiaryFragment"
+             tools:context="com.gmail.f.d.ganeeva.beokay.diary.DiaryFragment1"
              android:background="@android:color/transparent">
 
     <android.support.v7.widget.RecyclerView
@@ -12,7 +12,7 @@
         android:id="@+id/diary_list"/>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/addNote"
+        android:id="@+id/addNoteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

@@ -14,13 +14,9 @@ import com.gmail.f.d.ganeeva.beokay.base.BaseFragment;
 import com.gmail.f.d.ganeeva.beokay.databinding.FragmentRegisterBinding;
 
 public class RegisterFragment extends BaseFragment {
-    private RegisterViewModel registerViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        AuthorizationActivity activity = (AuthorizationActivity) getActivity();
-        registerViewModel = new RegisterViewModel(activity);
-        this.viewModel = registerViewModel;
         super.onCreate(savedInstanceState);
     }
 
@@ -30,9 +26,14 @@ public class RegisterFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        AuthorizationActivity activity = (AuthorizationActivity) getActivity();
+        RegisterViewModel registerViewModel = new RegisterViewModel(activity);
+        this.viewModel = registerViewModel;
         FragmentRegisterBinding binding  = DataBindingUtil.inflate(
             inflater, R.layout.fragment_register, container, false);
         binding.setUser(registerViewModel);
+
+        super.onCreateView(inflater, container, savedInstanceState);
         return binding.getRoot();
     }
 
