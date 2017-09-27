@@ -1,9 +1,11 @@
 package com.gmail.f.d.ganeeva.beokay.general;
 
 import android.app.Application;
+import android.content.pm.ActivityInfo;
 
 import com.gmail.f.d.ganeeva.beokay.general.di.AppComponent;
 import com.gmail.f.d.ganeeva.beokay.general.di.DaggerAppComponent;
+import com.gmail.f.d.ganeeva.beokay.general.di.modules.ApplicationContextModule;
 import com.gmail.f.d.ganeeva.beokay.general.di.modules.RestModule;
 import com.gmail.f.d.ganeeva.beokay.general.di.modules.UseCaseModule;
 import com.squareup.leakcanary.LeakCanary;
@@ -14,6 +16,7 @@ public class BeOkayApplication extends Application {
 
     @Override public void onCreate() {
         super.onCreate();
+
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
@@ -22,6 +25,7 @@ public class BeOkayApplication extends Application {
         LeakCanary.install(this);
 
         appComponent = DaggerAppComponent.builder()
+            .applicationContextModule(new ApplicationContextModule(this))
             .restModule(new RestModule())
             .useCaseModule(new UseCaseModule())
             .build();

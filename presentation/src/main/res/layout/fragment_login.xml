@@ -65,8 +65,8 @@
             android:layout_above="@+id/loginButtonHolder"
             android:layout_marginBottom="10dp"
             android:text="@{auth.error}"
-            android:textColor="@android:color/holo_red_dark"
-            android:visibility='@{auth.error == "" ? View.GONE : View.VISIBLE}'/>
+            android:visibility='@{auth.error == "" ? View.GONE : View.VISIBLE}'
+            style="@style/ErrorTextView"/>
 
         <FrameLayout
             android:id="@+id/loginButtonHolder"

@@ -1,6 +1,7 @@
 package com.gmail.f.d.ganeeva.beokay.base;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -37,8 +38,8 @@ public abstract class BaseActivity extends Activity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
         viewModel.release();
     }
 }

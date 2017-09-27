@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.gmail.f.d.ganeeva.beokay.diary.DiaryFragment;
+import com.gmail.f.d.ganeeva.beokay.diary.view.DiaryFragment;
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.schedule.ScheduleFragment;
 import com.gmail.f.d.ganeeva.beokay.settings.SettingsFragment;

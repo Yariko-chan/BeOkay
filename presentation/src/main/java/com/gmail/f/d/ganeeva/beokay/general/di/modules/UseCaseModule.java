@@ -1,10 +1,12 @@
 package com.gmail.f.d.ganeeva.beokay.general.di.modules;
 
 import com.gmail.f.d.ganeeva.data.net.RestService;
-import com.gmail.f.d.ganeeva.domain.interactions.LoginUseCase;
-import com.gmail.f.d.ganeeva.domain.interactions.RecoverPasswordUseCase;
-import com.gmail.f.d.ganeeva.domain.interactions.RegisterUseCase;
-import com.gmail.f.d.ganeeva.domain.interactions.ValidateLoginUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.auth.LoginUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.auth.RecoverPasswordUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.auth.RegisterUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.auth.ValidateLoginUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.diary.GetDiaryDraftsUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.diary.GetDiaryEntriesUseCase;
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,5 +33,15 @@ public class UseCaseModule {
     @Provides
     public ValidateLoginUseCase provideValidateLoginUC(RestService restService) {
         return new ValidateLoginUseCase(restService);
+    }
+
+    @Provides
+    public GetDiaryDraftsUseCase provideDiaryDraftsUC(RestService restService) {
+        return new GetDiaryDraftsUseCase(restService);
+    }
+
+    @Provides
+    public GetDiaryEntriesUseCase provideDiaryEntriesUC(RestService restService) {
+        return new GetDiaryEntriesUseCase(restService);
     }
 }

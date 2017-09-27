@@ -1,28 +1,12 @@
 package com.gmail.f.d.ganeeva.data.net;
 
 import com.gmail.f.d.ganeeva.data.entity.AuthDataModel;
+import com.gmail.f.d.ganeeva.data.entity.DiaryDraftDataModel;
+import com.gmail.f.d.ganeeva.data.entity.DiaryEntryDataModel;
 import com.gmail.f.d.ganeeva.data.entity.UserDataModel;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Type;
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
-
-import io.reactivex.Completable;
 import io.reactivex.Observable;
-import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Converter;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Diana on 16.08.2017.
@@ -89,5 +73,25 @@ public class RestService {
 
     public Observable<Boolean> validateLogin(String userToken) {
         return restAPI.validateLogin(userToken);
+    }
+
+    public Observable<DiaryDraftDataModel[]> getDiaryDrafts(int pageSize, int offset) {
+        Observable<DiaryDraftDataModel[]> drafts = Observable.just(new DiaryDraftDataModel[0]);
+        return restAPI.getDiaryDrafts(pageSize, offset);
+    }
+
+    public Observable<DiaryEntryDataModel[]> getDiaryEntries(String email) {
+        String whereClause = createCondition(email);
+        return restAPI.getDiaryEntries(whereClause);
+    }
+
+    // creates String for querying diary Entries by email
+    // e. g. "userId.email='someemail@gmail.com'"
+    private String createCondition(String email) {
+        StringBuilder builder = new StringBuilder("");
+        builder.append("userId.email='")
+            .append(email)
+            .append("'");
+        return builder.toString();
     }
 }

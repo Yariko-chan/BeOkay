@@ -13,8 +13,13 @@ import android.view.ViewGroup;
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity;
 import com.gmail.f.d.ganeeva.beokay.general.Authorization;
+import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
+
+import javax.inject.Inject;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
+
+    @Inject Context applicationContext;
 
     public SettingsFragment() {
     }
@@ -24,6 +29,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         super.onCreate(savedInstanceState);
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.settings_preferences);
+        BeOkayApplication.appComponent.inject(this);
     }
 
     @Override
@@ -35,7 +41,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         super.onBindPreferences();
 
         final Context context = getActivity();
-        String key = context.getResources().getString(R.string.settings_saved_email_key);
+        String key = applicationContext.getString(R.string.settings_saved_email_key);
         Preference logoutPref = findPreference(key);
         logoutPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {

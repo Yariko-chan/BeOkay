@@ -40,10 +40,17 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="DialogAnimation">
+    <style name="AddDiaryEntryDialogAnimation">
         <item name="android:windowEnterAnimation">@anim/expand_from_right_bottom</item>
         <item name="android:windowHideAnimation">@anim/collapse_to_right_bottom</item>
         <item name="android:windowExitAnimation">@anim/collapse_to_right_bottom</item>
+    </style>
+
+    <style name="DiaryDraftsDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/expand_from_left_center</item>
+        <item name="android:windowHideAnimation">@anim/collapse_to_left_center</item>
+        <item name="android:windowExitAnimation">@anim/collapse_to_left_center</item>
+        <item name="android:fragmentCloseExitAnimation">@anim/collapse_to_left_center</item>
     </style>
 
     <style name="AddDiaryEntryItemEditText">
@@ -73,6 +80,12 @@
     <style name="FlatImageButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="ErrorTextView">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
 

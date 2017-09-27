@@ -5,7 +5,7 @@ import android.os.Bundle
 
 import com.gmail.f.d.ganeeva.beokay.R
 import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity
-import com.gmail.f.d.ganeeva.domain.interactions.ValidateLoginUseCase
+import com.gmail.f.d.ganeeva.domain.interactions.auth.ValidateLoginUseCase
 
 import io.reactivex.annotations.NonNull
 import io.reactivex.observers.DisposableObserver
@@ -73,5 +73,10 @@ class LauncherActivity : Activity() {
         HomeActivity.show(this)
         this.finish()
         return
+    }
+
+    override fun onPause() {
+        super.onPause()
+        useCase.dispose()
     }
 }

@@ -1,16 +1,14 @@
 package com.gmail.f.d.ganeeva.beokay.authorization.register;
 
-import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
-import android.support.v4.app.FragmentActivity;
 
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
 import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.domain.entity.UserDomainModel;
-import com.gmail.f.d.ganeeva.domain.interactions.RegisterUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.auth.RegisterUseCase;
 
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -47,7 +45,7 @@ public class RegisterViewModel implements BaseViewModel {
 
     @Override
     public void release() {
-
+        useCase.dispose();
     }
 
     @Override
@@ -57,7 +55,6 @@ public class RegisterViewModel implements BaseViewModel {
 
     @Override
     public void pause() {
-
     }
 
     public void register() {

@@ -1,28 +1,51 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.gmail.f.d.ganeeva.beokay.diary.DiaryFragment1"
-             android:background="@android:color/transparent">
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.gmail.f.d.ganeeva.beokay.diary.view.DiaryViewModel"/>
+    </data>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                 xmlns:tools="http://schemas.android.com/tools"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 tools:context="com.gmail.f.d.ganeeva.beokay.diary.view.DiaryFragment"
+                 android:background="@android:color/transparent">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/diary_list"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.progress ? View.VISIBLE : View.GONE}"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/addNoteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:background="@color/colorPrimary"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_add_white_24dp"
-        android:visibility="visible"
-        app:elevation="20dp"
-        app:fabSize="normal"
-        android:padding="0dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@{viewModel.error}"
+            android:visibility='@{(viewModel.error == "" || viewModel.progress) ? View.GONE : View.VISIBLE}'
+            style="@style/ErrorTextView"/>
 
-</FrameLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/diary_list"
+            android:visibility='@{viewModel.progress ? View.GONE : View.VISIBLE}'/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/addNoteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:background="@color/colorPrimary"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_add_white_24dp"
+            android:visibility="visible"
+            app:elevation="20dp"
+            app:fabSize="normal"
+            android:padding="0dp"/>
+
+    </FrameLayout>
+</layout>

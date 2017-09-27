@@ -1,12 +1,11 @@
 package com.gmail.f.d.ganeeva.beokay.authorization.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
 
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.authorization.AuthorizationActivity;
@@ -17,7 +16,7 @@ import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.beokay.general.HomeActivity;
 import com.gmail.f.d.ganeeva.domain.entity.AuthDomainModel;
 import com.gmail.f.d.ganeeva.domain.entity.UserDomainModel;
-import com.gmail.f.d.ganeeva.domain.interactions.LoginUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.auth.LoginUseCase;
 
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -28,6 +27,8 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import retrofit2.HttpException;
 
+import static com.gmail.f.d.ganeeva.beokay.general.utils.ErrorsHandlingKt.getErrorMessage;
+
 public class LoginViewModel implements BaseViewModel{
     public ObservableField<String> login = new ObservableField<>("");
     public ObservableField<String> password = new ObservableField<>("");
@@ -37,6 +38,7 @@ public class LoginViewModel implements BaseViewModel{
     public ObservableBoolean isProgress = new ObservableBoolean(false);
 
     @Inject public LoginUseCase useCase;
+    @Inject Context applicationContext;
 
     private AuthorizationActivity context;
 
@@ -60,7 +62,7 @@ public class LoginViewModel implements BaseViewModel{
 
     @Override
     public void release() {
-
+        useCase.dispose();
     }
 
     @Override
@@ -70,6 +72,7 @@ public class LoginViewModel implements BaseViewModel{
 
     @Override
     public void pause() {
+
         // save auth settings
         Authorization auth = Authorization.getInstance(context);
         auth.setIsStayLogged(context, stayLogged.get());
@@ -77,18 +80,18 @@ public class LoginViewModel implements BaseViewModel{
         // save login to settings
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         sharedPref.edit()
-            .putString(context.getResources().getString(R.string.settings_saved_email_key), login.get())
+            .putString(applicationContext.getString(R.string.settings_saved_email_key), login.get())
             .apply();
 
     }
 
     public void login() {
         if (login.get().equals("")) {
-            error.set(context.getString(R.string.msg_login_void));
+            error.set(applicationContext.getString(R.string.msg_login_void));
             return;
         }
         if (password.get().equals("")) {
-            error.set(context.getString(R.string.msg_password_void));
+            error.set(applicationContext.getString(R.string.msg_password_void));
             return;
         }
 
@@ -123,19 +126,7 @@ public class LoginViewModel implements BaseViewModel{
                 // save auth settings
                 auth.setIsAuthorized(context, false);
 
-                if (e instanceof HttpException) {
-                    switch (((HttpException) e).code()) {
-                        case 401 : error.set(context.getString(R.string.msg_incorrect_auth_data)); break;
-                        case 400 : error.set(context.getString(R.string.msg_choose_other_account)); break;
-                        default: error.set(e.getMessage()); break;
-                    }
-                } else if (e instanceof SocketTimeoutException){
-                    error.set(context.getString(R.string.msg_connection_timed_out));
-                } else if (e instanceof UnknownHostException) {
-                    error.set(context.getString(R.string.msg_network_error));
-                } else {
-                    error.set(e.getMessage());
-                }
+                error.set(getErrorMessage(applicationContext, e));
             }
 
             @Override
@@ -145,8 +136,12 @@ public class LoginViewModel implements BaseViewModel{
         });
     }
 
+
+
     public void recover() {
         Intent intent = new Intent(context, RecoverPasswordActivity.class);
         context.startActivity(intent);
     }
+
+
 }

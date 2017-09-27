@@ -7,23 +7,30 @@
     <string name="settings">Настройки</string>
 
     <string name="msg_exit_caution">Нажми НАЗАД ещё раз для выхода из приложения</string>
+
     <string name="register_tab">Регистрация</string>
     <string name="login_tab">Авторизация</string>
+
     <string name="btn_login">Войти</string>
     <string name="btn_register">Зарегистрироваться</string>
+    <string name="btn_forgot_password"><u>Забыли пароль?</u></string>
+    <string name="btn_send_email">Отправить email</string>
+
+    <!--error messages -->
     <string name="msg_incorrect_auth_data">Неправильный логин или пароль</string>
     <string name="msg_network_error">Возникла ошибка соединения</string>
     <string name="msg_connection_timed_out">Время ожтдания ответа сервера истекло. Попробуйте позже.</string>
+    <string name="msg_unknown_error">Неизвестная ошибка</string>
+    <string name="msg_email_already_registered">Этот email уже зарегистрирован</string>
+    <string name="msg_choose_other_account">Ошибка авторизации. Попробуйте войти с другим аккаунтом. </string>
+    <string name="msg_login_void">Поле \"email\" пустое</string>
+    <string name="msg_password_void">Поле "пароль" пустое</string>
+
     <string name="hint_name">Имя…</string>
     <string name="hint_email">Email…</string>
     <string name="hint_password">*******</string>
-    <string name="msg_email_already_registered">Этот email уже зарегистрирован</string>
-    <string name="msg_choose_other_account">Ошибка авторизации. Попробуйте войти с другим аккаунтом. </string>
-    <string name="btn_forgot_password"><u>Забыли пароль?</u></string>
+
     <string name="string_enter_email_for_recovery">Введите email, и мы отправим вам ссылку для восстановления пароля</string>
-    <string name="btn_send_email">Отправить email</string>
-    <string name="msg_login_void">Поле \"email\" пустое</string>
-    <string name="msg_password_void">Поле "пароль" пустое</string>
     <string name="keep_me_logged_in">Запомнить меня</string>
     <string name="settings_logout">Выйти</string>
 

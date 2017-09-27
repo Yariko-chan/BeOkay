@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
  * getter and setter methods get and update variables in shared preferences
  */
 
+// TODO inject with singleton
+
 public class Authorization {
 
     private static final String AUTH_SHARED_PREFS = "AUTH_SHARED_PREFS";

@@ -13,7 +13,7 @@ import com.github.aakira.expandablelayout.ExpandableLayoutListener
 import com.gmail.f.d.ganeeva.beokay.R
 import com.gmail.f.d.ganeeva.beokay.base.BaseDialogFragment
 import com.gmail.f.d.ganeeva.beokay.databinding.FragmentDiaryAddBinding
-import kotlinx.android.synthetic.main.fragment_diary.*
+import com.gmail.f.d.ganeeva.beokay.diary.add.drafts.DiaryDraftsFragment
 import kotlinx.android.synthetic.main.fragment_diary_add.*
 
 /**
@@ -34,13 +34,13 @@ import kotlinx.android.synthetic.main.fragment_diary_add.*
 class AddDiaryEntryFragment : BaseDialogFragment() {
 
     /**
-     *inflating view, binding viewModel
+     * inflating view, binding viewModel
      */
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val addDiaryEntryViewModel = AddDiaryEntryViewModel()
         this.viewModel = addDiaryEntryViewModel
-        val binding : FragmentDiaryAddBinding = DataBindingUtil.inflate<FragmentDiaryAddBinding>(inflater!!,
+        val binding : FragmentDiaryAddBinding = DataBindingUtil.inflate<FragmentDiaryAddBinding>(inflater,
                 R.layout.fragment_diary_add, container, false)
         binding.viewModel = addDiaryEntryViewModel
 
@@ -61,6 +61,13 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
 
         item4_expandable.setListener(removeButtonAvailability) // button available if 4th item expanded
         item10_expandable.setListener(addButtonAvailability) // button available if 10h item collapsed
+
+        addItemFromDrafts.setOnClickListener{ openDrafts() }
+    }
+
+    private fun openDrafts() {
+        val fragment = DiaryDraftsFragment()
+        fragment.show(fragmentManager, "DRAFTS")
     }
 
     /**
@@ -73,7 +80,7 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
         val builder = Dialog(activity)
         builder.requestWindowFeature(Window.FEATURE_NO_TITLE)
         builder.window.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
-        builder.window.attributes.windowAnimations = R.style.DialogAnimation
+        builder.window.attributes.windowAnimations = R.style.AddDiaryEntryDialogAnimation
         builder.setContentView(view)
         return builder
     }

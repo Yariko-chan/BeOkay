@@ -1,23 +1,18 @@
 package com.gmail.f.d.ganeeva.beokay.authorization.password_recovery;
 
-import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
 import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
-import com.gmail.f.d.ganeeva.domain.interactions.RecoverPasswordUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.auth.RecoverPasswordUseCase;
 
 import javax.inject.Inject;
 
-import io.reactivex.Completable;
-import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
-import retrofit2.Call;
 import retrofit2.Response;
 
 /**
@@ -44,7 +39,7 @@ public class RecoverPasswordViewModel implements BaseViewModel {
 
     @Override
     public void release() {
-
+        useCase.dispose();
     }
 
     @Override

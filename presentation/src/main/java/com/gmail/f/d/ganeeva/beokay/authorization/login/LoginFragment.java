@@ -3,6 +3,7 @@ package com.gmail.f.d.ganeeva.beokay.authorization.login;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,6 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) { // viewModel.init() in BaseFragment
         super.onCreate(savedInstanceState);
-    }
-
-    public LoginFragment() {
-        // Required empty public constructor
     }
 
     @Override

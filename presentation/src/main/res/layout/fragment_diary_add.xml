@@ -20,6 +20,20 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:id="@+id/toolbar">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_close_white_24dp"
+                style="@style/FlatImageButton"
+                android:onClick=""/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/btn_save"
+                android:textColor="@color/colorIcons"
+                android:gravity="center_vertical|end|right"
+                style="@style/FlatButton"
+                android:layout_marginRight="10dp"/>
         </android.support.v7.widget.Toolbar>
 
         <ScrollView
@@ -43,17 +57,23 @@
                 <EditText
                     android:id="@+id/item1"
                     android:layout_below="@+id/textView3"
-                    style="@style/AddDiaryEntryItemEditText"/>
+                    style="@style/AddDiaryEntryItemEditText"
+                    android:text="@={viewModel.entry1}"
+                    />
 
                 <EditText
                     android:id="@+id/item2"
                     android:layout_below="@+id/item1"
-                    style="@style/AddDiaryEntryItemEditText"/>
+                    style="@style/AddDiaryEntryItemEditText"
+                    android:text="@={viewModel.entry2}"
+                    />
 
                 <EditText
                     android:id="@+id/item3"
                     android:layout_below="@+id/item2"
-                    style="@style/AddDiaryEntryItemEditText"/>
+                    style="@style/AddDiaryEntryItemEditText"
+                    android:text="@={viewModel.entry3}"
+                    />
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/item4_expandable"
@@ -66,7 +86,9 @@
                     app:ael_orientation="vertical">
                     <EditText
                         android:id="@+id/item4"
-                        style="@style/AddDiaryEntryItemEditText"/>
+                        style="@style/AddDiaryEntryItemEditText"
+                        android:text="@={viewModel.entry4}"
+                        />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
@@ -80,7 +102,9 @@
                     app:ael_orientation="vertical">
                     <EditText
                         android:id="@+id/item5"
-                        style="@style/AddDiaryEntryItemEditText"/>
+                        style="@style/AddDiaryEntryItemEditText"
+                        android:text="@={viewModel.entry5}"
+                        />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
@@ -94,7 +118,9 @@
                     app:ael_orientation="vertical">
                     <EditText
                         android:id="@+id/item6"
-                        style="@style/AddDiaryEntryItemEditText"/>
+                        style="@style/AddDiaryEntryItemEditText"
+                        android:text="@={viewModel.entry6}"
+                        />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
@@ -108,7 +134,9 @@
                     app:ael_orientation="vertical">
                     <EditText
                         android:id="@+id/item7"
-                        style="@style/AddDiaryEntryItemEditText"/>
+                        style="@style/AddDiaryEntryItemEditText"
+                        android:text="@={viewModel.entry7}"
+                        />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
@@ -122,7 +150,9 @@
                     app:ael_orientation="vertical">
                     <EditText
                         android:id="@+id/item8"
-                        style="@style/AddDiaryEntryItemEditText"/>
+                        style="@style/AddDiaryEntryItemEditText"
+                        android:text="@={viewModel.entry8}"
+                        />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
@@ -136,7 +166,9 @@
                     app:ael_orientation="vertical">
                     <EditText
                         android:id="@+id/item9"
-                        style="@style/AddDiaryEntryItemEditText"/>
+                        style="@style/AddDiaryEntryItemEditText"
+                        android:text="@={viewModel.entry9}"
+                        />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
@@ -145,16 +177,19 @@
                     style="@style/ExpandableItem">
                     <EditText
                         android:id="@+id/item10"
-                        style="@style/AddDiaryEntryItemEditText"/>
+                        style="@style/AddDiaryEntryItemEditText"
+                        android:text="@={viewModel.entry10}"
+                        />
                 </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <Button
                     android:id="@+id/addItemFromDrafts"
-                    android:text="@string/open_diary_items_drafts"
                     style="@style/FlatButton"
-                    android:layout_below="@id/item10_expandable"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"/>
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/item10_expandable"
+                    android:text="@string/open_diary_items_drafts"
+                    android:visibility="gone"/>
 
                 <ImageButton
                     android:id="@+id/removeItemButton"

@@ -1,4 +1,4 @@
-package com.gmail.f.d.ganeeva.domain.interactions
+package com.gmail.f.d.ganeeva.domain.interactions.auth
 
 import com.gmail.f.d.ganeeva.data.entity.UserDataModel
 import io.reactivex.Observable
