@@ -16,6 +16,7 @@ fun getErrorMessage(context: Context, @NonNull e: Throwable): String {
         when (e.code()) {
             401 -> context.getString(R.string.msg_incorrect_auth_data)
             400 -> context.getString(R.string.msg_choose_other_account)
+            409 -> context.getString(R.string.msg_email_already_registered)
             else -> e.message ?: context.getString(R.string.msg_unknown_error)
         }
     } else if (e is SocketTimeoutException) {

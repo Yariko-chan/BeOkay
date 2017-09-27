@@ -49,6 +49,6 @@ public interface RestAPI {
 
     // get all data entries related to user with such email
     // data/diaryEntries?where=userId.email='lililala1991@gmail.com'
-    @GET("data/diaryEntries")
+    @GET("data/diaryEntries?sortBy=entryDate%20desc")
     Observable<DiaryEntryDataModel[]> getDiaryEntries(@Query("where") String condition);
 }

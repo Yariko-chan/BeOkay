@@ -33,4 +33,5 @@
     <string name="tell_why_you_good_today">What makes you feel proud today?</string>
     <string name="btn_save">save</string>
     <string name="msg_unknown_error">Unknown error</string>
+    <string name="msg_confirm_email">Confirm your registration by clicking link in email we sent you, then you\'ll be able to login</string>
 </resources>

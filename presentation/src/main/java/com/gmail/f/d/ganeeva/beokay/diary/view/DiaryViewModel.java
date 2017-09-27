@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
+import com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryFragment;
 import com.gmail.f.d.ganeeva.beokay.diary.view.list_item.DiaryItemViewHolder;
 import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.domain.entity.DiaryEntryDomainModel;

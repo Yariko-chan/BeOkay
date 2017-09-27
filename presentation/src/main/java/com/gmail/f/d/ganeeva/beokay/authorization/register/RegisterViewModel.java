@@ -1,5 +1,6 @@
 package com.gmail.f.d.ganeeva.beokay.authorization.register;
 
+import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 
@@ -19,6 +20,8 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import retrofit2.HttpException;
 
+import static com.gmail.f.d.ganeeva.beokay.general.utils.ErrorsHandlingKt.getErrorMessage;
+
 /**
  * Created by Diana on 27.08.2017 at 19:18.
  */
@@ -33,6 +36,7 @@ public class RegisterViewModel implements BaseViewModel {
     private final AuthorizationActivity context;
 
     @Inject RegisterUseCase useCase;
+    @Inject Context applicationContext;
 
     public RegisterViewModel(AuthorizationActivity context) {
         this.context = context;
@@ -76,26 +80,14 @@ public class RegisterViewModel implements BaseViewModel {
             @Override
             public void onNext(@NonNull UserDomainModel userDomainModel) {
                 // TODO: some logic opening activity
-                error.set(userDomainModel.getId());
+                error.set(context.getString(R.string.msg_confirm_email) );
                 isProgress.set(false);
             }
 
             @Override
             public void onError(@NonNull Throwable e) {
                 isProgress.set(false);
-
-                if (e instanceof HttpException) {
-                    switch (((HttpException) e).code()) {
-                        case 409 : error.set(context.getString(R.string.msg_email_already_registered)); break;
-                        default: error.set(e.getMessage()); break;
-                    }
-                } else if (e instanceof SocketTimeoutException){
-                    error.set(context.getString(R.string.msg_connection_timed_out));
-                } else if (e instanceof UnknownHostException) {
-                    error.set(context.getString(R.string.msg_network_error));
-                } else {
-                    error.set(e.getMessage());
-                }
+                error.set(getErrorMessage(applicationContext, e));
             }
 
             @Override
