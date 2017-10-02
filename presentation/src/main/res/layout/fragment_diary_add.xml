@@ -33,7 +33,8 @@
                 android:textColor="@color/colorIcons"
                 android:gravity="center_vertical|end|right"
                 style="@style/FlatButton"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:onClick="@{() -> viewModel.saveEntries()}"/>
         </android.support.v7.widget.Toolbar>
 
         <ScrollView
@@ -75,21 +76,34 @@
                     android:text="@={viewModel.entry3}"
                     />
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <!--<com.github.aakira.expandablelayout.ExpandableRelativeLayout-->
+                    <!--android:id="@+id/item4_expandable"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/item3"-->
+                    <!--app:ael_duration="500"-->
+                    <!--app:ael_expanded="false"-->
+                    <!--app:ael_interpolator="fastOutSlowIn"-->
+                    <!--app:ael_orientation="vertical">-->
+                    <!--<EditText-->
+                        <!--android:id="@+id/item4"-->
+                        <!--style="@style/AddDiaryEntryItemEditText"-->
+                        <!--android:text="@={viewModel.entry4}"-->
+                        <!--/>-->
+                <!--</com.github.aakira.expandablelayout.ExpandableRelativeLayout>-->
+
+                <com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText
                     android:id="@+id/item4_expandable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item3"
                     app:ael_duration="500"
-                    app:ael_expanded="true"
+                    app:ael_expanded="false"
                     app:ael_interpolator="fastOutSlowIn"
-                    app:ael_orientation="vertical">
-                    <EditText
-                        android:id="@+id/item4"
-                        style="@style/AddDiaryEntryItemEditText"
-                        android:text="@={viewModel.entry4}"
-                        />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    app:ael_orientation="vertical"
+                    style="@style/AddDiaryEntryItemEditText"
+                    app:text="@={viewModel.entry4}"
+                    ></com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText>
 
                 <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/item5_expandable"
@@ -97,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/item4_expandable"
                     app:ael_duration="500"
-                    app:ael_expanded="true"
+                    app:ael_expanded="false"
                     app:ael_interpolator="fastOutSlowIn"
                     app:ael_orientation="vertical">
                     <EditText
@@ -113,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item5_expandable"
                     app:ael_duration="500"
-                    app:ael_expanded="true"
+                    app:ael_expanded="false"
                     app:ael_interpolator="fastOutSlowIn"
                     app:ael_orientation="vertical">
                     <EditText
@@ -129,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item6_expandable"
                     app:ael_duration="500"
-                    app:ael_expanded="true"
+                    app:ael_expanded="false"
                     app:ael_interpolator="fastOutSlowIn"
                     app:ael_orientation="vertical">
                     <EditText
@@ -145,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/item7_expandable"
                     app:ael_duration="500"
-                    app:ael_expanded="true"
+                    app:ael_expanded="false"
                     app:ael_interpolator="fastOutSlowIn"
                     app:ael_orientation="vertical">
                     <EditText
@@ -161,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item8_expandable"
                     app:ael_duration="500"
-                    app:ael_expanded="true"
+                    app:ael_expanded="false"
                     app:ael_interpolator="fastOutSlowIn"
                     app:ael_orientation="vertical">
                     <EditText

@@ -2,6 +2,7 @@ package com.gmail.f.d.ganeeva.beokay.diary.add;
 
 import android.databinding.InverseMethod;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
 

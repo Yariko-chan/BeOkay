@@ -15,6 +15,7 @@
     <string name="btn_register">Зарегистрироваться</string>
     <string name="btn_forgot_password"><u>Забыли пароль?</u></string>
     <string name="btn_send_email">Отправить email</string>
+    <string name="btn_save">save</string>
 
     <!--error messages -->
     <string name="msg_incorrect_auth_data">Неправильный логин или пароль</string>

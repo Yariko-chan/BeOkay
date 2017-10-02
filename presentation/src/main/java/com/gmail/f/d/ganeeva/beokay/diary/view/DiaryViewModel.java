@@ -78,7 +78,5 @@ public class DiaryViewModel implements BaseViewModel {
     }
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {}
 }

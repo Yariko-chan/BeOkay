@@ -54,8 +54,6 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        collapseEditTexts()
-
         addItemButton.setOnClickListener{ addEditText() }
         removeItemButton.setOnClickListener{ removeLastEditText() }
 
@@ -95,29 +93,19 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
     }
 
     /**
-     * collapses all editText from 4 to 10
-     * should be done from xml, but somehow attribute doesnt work
-     */
-    private fun collapseEditTexts() {
-        val items = arrayOf(item4_expandable, item5_expandable, item6_expandable, item7_expandable,
-                item8_expandable, item9_expandable, item10_expandable)
-        for (item in items) {
-            if (item.isExpanded) {
-                item.collapse()
-            }
-        }
-    }
-
-    /**
      * showing first hidden item in range 4..10
      */
     private fun addEditText() {
-        val items = arrayOf(item4_expandable, item5_expandable, item6_expandable, item7_expandable,
+        if (!item4_expandable.isExpanded) {
+            item4_expandable.expand()
+            return
+        }
+        val items = arrayOf( item5_expandable, item6_expandable, item7_expandable,
                 item8_expandable, item9_expandable, item10_expandable)
         for (item in items) {
             if (!item.isExpanded) {
                 item.expand()
-                break
+                return
             }
         }
     }
@@ -126,13 +114,17 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
      * hiding last visible item in range 4..10
      */
     private fun removeLastEditText() {
-        val items = arrayOf(item4_expandable, item5_expandable, item6_expandable, item7_expandable,
+        val items = arrayOf(item5_expandable, item6_expandable, item7_expandable,
                 item8_expandable, item9_expandable, item10_expandable)
         for (item in items.reversedArray()) {
             if (item.isExpanded) {
                 item.collapse()
-                break
+                return
             }
+        }
+        if (item4_expandable.isExpanded) {
+            item4_expandable.collapse()
+            return
         }
     }
 

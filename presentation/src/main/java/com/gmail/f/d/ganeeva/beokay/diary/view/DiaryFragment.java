@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseFragment;
 import com.gmail.f.d.ganeeva.beokay.databinding.FragmentDiaryBinding;
+import com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryFragment;
 
 public class DiaryFragment extends BaseFragment {
 
@@ -46,6 +47,25 @@ public class DiaryFragment extends BaseFragment {
         if (binding != null && diaryViewModel != null) {
             binding.diaryList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
             binding.diaryList.setAdapter(diaryViewModel.adapter);
+
+            /**
+             * easier to set it here, not in viewModel
+             */
+            binding.addEntryFAB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addEntry();
+                }
+            });
         }
+    }
+
+    /**
+     * method for opening AddDiaryEntryFragment,
+     * from where you can add new diary entries
+     */
+    public void addEntry() {
+        AddDiaryEntryFragment fragment = new AddDiaryEntryFragment();
+        fragment.show(getFragmentManager(), "");
     }
 }

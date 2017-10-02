@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.aakira.expandablelayout.ExpandableRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/expandable"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:ael_expanded="true"
+    app:ael_duration="500"
+    app:ael_interpolator="fastOutSlowIn"
+    app:ael_orientation="vertical">
+    <EditText
+        android:id="@+id/editText"
+        style="@style/AddDiaryEntryItemEditText"
+        />
+</com.github.aakira.expandablelayout.ExpandableRelativeLayout>
