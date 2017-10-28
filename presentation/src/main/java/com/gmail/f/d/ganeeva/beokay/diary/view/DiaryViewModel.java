@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
+import com.gmail.f.d.ganeeva.beokay.diary.OnDataChangedListener;
 import com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryFragment;
 import com.gmail.f.d.ganeeva.beokay.diary.view.list_item.DiaryItemViewHolder;
 import com.gmail.f.d.ganeeva.beokay.general.Authorization;
@@ -30,7 +31,7 @@ import static com.gmail.f.d.ganeeva.beokay.general.utils.ErrorsHandlingKt.getErr
  * Created by Diana on 26.09.2017 at 15:33.
  */
 
-public class DiaryViewModel implements BaseViewModel {
+public class DiaryViewModel implements BaseViewModel, OnDataChangedListener {
     private static final String TAG = DiaryViewModel.class.getSimpleName();
 
     public DiaryListAdapter<DiaryItemViewHolder> adapter = new DiaryListAdapter<>();
@@ -79,4 +80,9 @@ public class DiaryViewModel implements BaseViewModel {
 
     @Override
     public void pause() {}
+
+    @Override
+    public void onDataChanged() {
+        resume();
+    }
 }

@@ -1,16 +1,14 @@
 package com.gmail.f.d.ganeeva.beokay.base;
 
-import android.app.Activity;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 
 /**
- * Created by Diana on 09.08.2017.
+ * Created by Diana on 28.10.2017 at 18:20.
  */
 
-public abstract class BaseActivity extends Activity {
+public class BaseFragmentActivity extends FragmentActivity {
 
     protected BaseViewModel viewModel;
 

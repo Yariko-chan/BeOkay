@@ -2,6 +2,7 @@ package com.gmail.f.d.ganeeva.beokay.general.di.modules;
 
 import android.content.Context;
 
+import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.data.net.RestAPI;
 import com.gmail.f.d.ganeeva.data.net.RestService;
 
@@ -17,16 +18,22 @@ import dagger.Provides;
  */
 
 @Module
-public class ApplicationContextModule {
-    private Context context;
+public class ApplicationModule {
+    private BeOkayApplication application;
 
-    public ApplicationContextModule(Context context) {
-        this.context = context;
+    public ApplicationModule(BeOkayApplication context) {
+        this.application = context;
     }
 
     @Singleton
     @Provides
-    public Context provideApplicationcontext() {
-        return context;
+    public BeOkayApplication provideApplication() {
+        return application;
+    }
+
+    @Singleton
+    @Provides
+    public Context provideApplicationContext() {
+        return application;
     }
 }

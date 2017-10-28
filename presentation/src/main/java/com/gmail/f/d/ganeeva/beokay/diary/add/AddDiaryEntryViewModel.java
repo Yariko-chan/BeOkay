@@ -1,16 +1,19 @@
 package com.gmail.f.d.ganeeva.beokay.diary.add;
 
+import android.app.Activity;
 import android.content.Context;
 import android.databinding.InverseMethod;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.gmail.f.d.ganeeva.beokay.R;
+import com.gmail.f.d.ganeeva.beokay.base.BaseDialogFragment;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
 import com.gmail.f.d.ganeeva.beokay.general.Authorization;
 import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
@@ -50,11 +53,16 @@ public class AddDiaryEntryViewModel implements BaseViewModel {
 
     @Inject SaveDiaryEntryUC useCase;
     @Inject Context applicationContext;
+    @Inject BeOkayApplication application;
 
     private Fragment fragment;
+    private Activity activity;
 
     public AddDiaryEntryViewModel(Fragment fragment) {
         this.fragment = fragment;
+    }
+    public AddDiaryEntryViewModel(Activity activity) {
+        this.activity = activity;
     }
 
     @Override
@@ -103,6 +111,7 @@ public class AddDiaryEntryViewModel implements BaseViewModel {
             @Override
             public void onNext(@NonNull DiaryEntryDomainModel diaryEntryDomainModel) {
                 ((AddDiaryEntryFragment) fragment).dismissProgress();
+                application.getDataChangeListener().onDataChanged();
                 exit();
             }
 

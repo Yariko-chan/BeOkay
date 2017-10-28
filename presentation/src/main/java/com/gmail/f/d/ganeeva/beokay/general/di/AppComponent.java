@@ -4,10 +4,11 @@ import com.gmail.f.d.ganeeva.beokay.authorization.login.LoginViewModel;
 import com.gmail.f.d.ganeeva.beokay.authorization.password_recovery.RecoverPasswordViewModel;
 import com.gmail.f.d.ganeeva.beokay.authorization.register.RegisterViewModel;
 import com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryViewModel;
+import com.gmail.f.d.ganeeva.beokay.diary.view.DiaryFragment;
 import com.gmail.f.d.ganeeva.beokay.diary.view.DiaryViewModel;
 import com.gmail.f.d.ganeeva.beokay.diary.add.drafts.DiaryDraftsViewModel;
 import com.gmail.f.d.ganeeva.beokay.general.LauncherActivity;
-import com.gmail.f.d.ganeeva.beokay.general.di.modules.ApplicationContextModule;
+import com.gmail.f.d.ganeeva.beokay.general.di.modules.ApplicationModule;
 import com.gmail.f.d.ganeeva.beokay.general.di.modules.RestModule;
 import com.gmail.f.d.ganeeva.beokay.general.di.modules.UseCaseModule;
 import com.gmail.f.d.ganeeva.beokay.settings.SettingsFragment;
@@ -18,7 +19,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
-@Component(modules = {RestModule.class, UseCaseModule.class, ApplicationContextModule.class})
+@Component(modules = {RestModule.class, UseCaseModule.class, ApplicationModule.class})
 @Singleton
 public interface AppComponent {
 
@@ -37,4 +38,6 @@ public interface AppComponent {
     void inject(SettingsFragment settingsFragment);
 
     void inject(AddDiaryEntryViewModel settingsFragment);
+
+    void inject(DiaryFragment diaryFragment);
 }
