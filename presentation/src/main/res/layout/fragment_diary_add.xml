@@ -7,13 +7,14 @@
             type="com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryViewModel"/>
     </data>
 
-    <LinearLayout
+    <RelativeLayout
                   xmlns:app="http://schemas.android.com/apk/res-auto"
                   android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:background="@color/colorIcons"
                   android:theme="@style/AppTheme">
+
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
@@ -25,7 +26,8 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_close_white_24dp"
                 style="@style/FlatImageButton"
-                android:contentDescription="@string/btn_exit_without_save"/>
+                android:contentDescription="@string/btn_exit_without_save"
+                android:onClick="@{() -> viewModel.exit()}"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_gravity="end"
@@ -40,7 +42,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -173,5 +176,22 @@
             </RelativeLayout>
         </ScrollView>
 
-    </LinearLayout>
+        <FrameLayout
+            android:id="@+id/progressOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/colorWhiteBlur"
+            android:visibility="gone" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_gravity="center">
+            </ProgressBar>
+        </FrameLayout>
+
+    </RelativeLayout>
 </layout>

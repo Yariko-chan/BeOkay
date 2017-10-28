@@ -41,7 +41,7 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val addDiaryEntryViewModel = AddDiaryEntryViewModel()
+        val addDiaryEntryViewModel = AddDiaryEntryViewModel(this)
         this.viewModel = addDiaryEntryViewModel
         val binding : FragmentDiaryAddBinding = DataBindingUtil.inflate<FragmentDiaryAddBinding>(inflater,
                 R.layout.fragment_diary_add, container, false)
@@ -169,5 +169,13 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
             addItemButton.visibility = View.VISIBLE
             addItemButton.isEnabled = true
         }
+    }
+
+    fun showProgress() {
+        progressOverlay.visibility = View.VISIBLE
+    }
+
+    fun dismissProgress() {
+        progressOverlay.visibility = View.GONE
     }
 }

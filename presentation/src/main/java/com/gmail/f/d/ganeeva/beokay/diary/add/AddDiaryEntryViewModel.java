@@ -5,9 +5,12 @@ import android.databinding.InverseMethod;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
 import com.gmail.f.d.ganeeva.beokay.general.Authorization;
 import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
@@ -32,6 +35,8 @@ import io.reactivex.observers.DisposableObserver;
  */
 
 public class AddDiaryEntryViewModel implements BaseViewModel {
+    private static final String TAG = AddDiaryEntryViewModel.class.getSimpleName();
+
     public ObservableField<String> entry1 = new ObservableField<>("");
     public ObservableField<String> entry2 = new ObservableField<>("");
     public ObservableField<String> entry3 = new ObservableField<>("");
@@ -46,6 +51,12 @@ public class AddDiaryEntryViewModel implements BaseViewModel {
     @Inject SaveDiaryEntryUC useCase;
     @Inject Context applicationContext;
 
+    private Fragment fragment;
+
+    public AddDiaryEntryViewModel(Fragment fragment) {
+        this.fragment = fragment;
+    }
+
     @Override
     public void init() {
         BeOkayApplication.appComponent.inject(this);
@@ -54,6 +65,7 @@ public class AddDiaryEntryViewModel implements BaseViewModel {
     @Override
     public void release() {
         useCase.dispose();
+        fragment = null;
     }
 
     @Override
@@ -85,22 +97,28 @@ public class AddDiaryEntryViewModel implements BaseViewModel {
         String jsonArray = new Gson().toJson(entries);
 
         // send to server object
+        ((AddDiaryEntryFragment) fragment).showProgress();
         useCase.execute(jsonArray, Authorization.getInstance(applicationContext).getUserToken(),
             new DisposableObserver<DiaryEntryDomainModel>() {
             @Override
             public void onNext(@NonNull DiaryEntryDomainModel diaryEntryDomainModel) {
-                Log.d("", "");
+                ((AddDiaryEntryFragment) fragment).dismissProgress();
+                exit();
             }
 
             @Override
             public void onError(@NonNull Throwable e) {
-                Log.d("", "");
+                Log.e(TAG, "Error saving diary entries: " + e);
+                ((AddDiaryEntryFragment) fragment).dismissProgress();
+                Toast.makeText(applicationContext, R.string.msg_diary_entry_not_saved, Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onComplete() {
-
-            }
+            public void onComplete() {}
         });
+    }
+
+    public void exit() {
+        fragment.getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();
     }
 }
