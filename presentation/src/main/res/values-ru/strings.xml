@@ -42,4 +42,7 @@
     <string name="open_diary_items_drafts">Не знаешь, что добавить?</string>
     <string name="tell_why_you_good_today">Расскажи, почему ты сегодня молодец.</string>
     <string name="msg_confirm_email">Подтвердите регистрацию, нажав ссылку в письме, затем вы сможете авторизоваться в приложении.</string>
+    <string name="btn_remove_edittext">Удалить строку</string>
+    <string name="btn_add_edittext">Добавить строку</string>
+    <string name="btn_exit_without_save">Выйти без сохранения</string>
 </resources>

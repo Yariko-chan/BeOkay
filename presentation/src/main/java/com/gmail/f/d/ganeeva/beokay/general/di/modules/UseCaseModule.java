@@ -7,6 +7,7 @@ import com.gmail.f.d.ganeeva.domain.interactions.auth.RegisterUseCase;
 import com.gmail.f.d.ganeeva.domain.interactions.auth.ValidateLoginUseCase;
 import com.gmail.f.d.ganeeva.domain.interactions.diary.GetDiaryDraftsUseCase;
 import com.gmail.f.d.ganeeva.domain.interactions.diary.GetDiaryEntriesUseCase;
+import com.gmail.f.d.ganeeva.domain.interactions.diary.SaveDiaryEntryUC;
 
 import dagger.Module;
 import dagger.Provides;
@@ -43,5 +44,10 @@ public class UseCaseModule {
     @Provides
     public GetDiaryEntriesUseCase provideDiaryEntriesUC(RestService restService) {
         return new GetDiaryEntriesUseCase(restService);
+    }
+
+    @Provides
+    public SaveDiaryEntryUC provideSaveDiaryUC(RestService restService) {
+        return new SaveDiaryEntryUC(restService);
     }
 }

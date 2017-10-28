@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
@@ -7,7 +7,7 @@
             type="com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryViewModel"/>
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
                   xmlns:app="http://schemas.android.com/apk/res-auto"
                   android:orientation="vertical"
                   android:layout_width="match_parent"
@@ -25,15 +25,16 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_close_white_24dp"
                 style="@style/FlatImageButton"
-                android:onClick=""/>
+                android:contentDescription="@string/btn_exit_without_save"/>
             <Button
                 android:layout_width="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:text="@string/btn_save"
                 android:textColor="@color/colorIcons"
-                android:gravity="center_vertical|end|right"
+                android:gravity="center_vertical|end"
                 style="@style/FlatButton"
                 android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:onClick="@{() -> viewModel.saveEntries()}"/>
         </android.support.v7.widget.Toolbar>
 
@@ -57,10 +58,11 @@
 
                 <EditText
                     android:id="@+id/item1"
-                    android:layout_below="@+id/textView3"
                     style="@style/AddDiaryEntryItemEditText"
                     android:text="@={viewModel.entry1}"
-                    />
+                    android:layout_below="@+id/textView3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
 
                 <EditText
                     android:id="@+id/item2"
@@ -76,131 +78,68 @@
                     android:text="@={viewModel.entry3}"
                     />
 
-                <!--<com.github.aakira.expandablelayout.ExpandableRelativeLayout-->
-                    <!--android:id="@+id/item4_expandable"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_below="@+id/item3"-->
-                    <!--app:ael_duration="500"-->
-                    <!--app:ael_expanded="false"-->
-                    <!--app:ael_interpolator="fastOutSlowIn"-->
-                    <!--app:ael_orientation="vertical">-->
-                    <!--<EditText-->
-                        <!--android:id="@+id/item4"-->
-                        <!--style="@style/AddDiaryEntryItemEditText"-->
-                        <!--android:text="@={viewModel.entry4}"-->
-                        <!--/>-->
-                <!--</com.github.aakira.expandablelayout.ExpandableRelativeLayout>-->
-
                 <com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText
                     android:id="@+id/item4_expandable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item3"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="fastOutSlowIn"
-                    app:ael_orientation="vertical"
-                    style="@style/AddDiaryEntryItemEditText"
                     app:text="@={viewModel.entry4}"
-                    ></com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText>
+                    />
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText
                     android:id="@+id/item5_expandable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/item4_expandable"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="fastOutSlowIn"
-                    app:ael_orientation="vertical">
-                    <EditText
-                        android:id="@+id/item5"
-                        style="@style/AddDiaryEntryItemEditText"
-                        android:text="@={viewModel.entry5}"
-                        />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    android:layout_below="@+id/item4_expandable"
+                    app:text="@={viewModel.entry5}"
+                    />
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText
                     android:id="@+id/item6_expandable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item5_expandable"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="fastOutSlowIn"
-                    app:ael_orientation="vertical">
-                    <EditText
-                        android:id="@+id/item6"
-                        style="@style/AddDiaryEntryItemEditText"
-                        android:text="@={viewModel.entry6}"
-                        />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    app:text="@={viewModel.entry6}"
+                    />
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText
                     android:id="@+id/item7_expandable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item6_expandable"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="fastOutSlowIn"
-                    app:ael_orientation="vertical">
-                    <EditText
-                        android:id="@+id/item7"
-                        style="@style/AddDiaryEntryItemEditText"
-                        android:text="@={viewModel.entry7}"
-                        />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    app:text="@={viewModel.entry7}"
+                    />
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText
                     android:id="@+id/item8_expandable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/item7_expandable"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="fastOutSlowIn"
-                    app:ael_orientation="vertical">
-                    <EditText
-                        android:id="@+id/item8"
-                        style="@style/AddDiaryEntryItemEditText"
-                        android:text="@={viewModel.entry8}"
-                        />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    android:layout_below="@+id/item7_expandable"
+                    app:text="@={viewModel.entry8}"
+                    />
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText
                     android:id="@+id/item9_expandable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item8_expandable"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="fastOutSlowIn"
-                    app:ael_orientation="vertical">
-                    <EditText
-                        android:id="@+id/item9"
-                        style="@style/AddDiaryEntryItemEditText"
-                        android:text="@={viewModel.entry9}"
-                        />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    app:text="@={viewModel.entry9}"
+                    />
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <com.gmail.f.d.ganeeva.beokay.diary.add.ExpandableEditText
                     android:id="@+id/item10_expandable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/item9_expandable"
-                    style="@style/ExpandableItem">
-                    <EditText
-                        android:id="@+id/item10"
-                        style="@style/AddDiaryEntryItemEditText"
-                        android:text="@={viewModel.entry10}"
-                        />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    app:text="@={viewModel.entry10}"
+                   />
 
                 <Button
                     android:id="@+id/addItemFromDrafts"
                     style="@style/FlatButton"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@id/item10_expandable"
                     android:text="@string/open_diary_items_drafts"
                     android:visibility="gone"/>
@@ -211,10 +150,13 @@
                     android:layout_below="@id/item10_expandable"
                     android:layout_alignParentBottom="true"
                     android:layout_toLeftOf="@+id/addItemButton"
+                    android:layout_toStartOf="@+id/addItemButton"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     style="@style/FlatImageButton"
                     android:visibility="invisible"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:contentDescription="@string/btn_remove_edittext"/>
 
                 <ImageButton
                     android:id="@+id/addItemButton"
@@ -222,7 +164,11 @@
                     android:layout_below="@id/item10_expandable"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    style="@style/FlatImageButton"/>
+                    android:layout_alignParentEnd="true"
+                    style="@style/FlatImageButton"
+                    android:visibility="visible"
+                    android:enabled="true"
+                    android:contentDescription="@string/btn_add_edittext"/>
 
             </RelativeLayout>
         </ScrollView>

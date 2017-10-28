@@ -9,6 +9,7 @@ import io.reactivex.Observable;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -33,22 +34,20 @@ public interface RestAPI {
     @GET("data/DiaryDrafts")
     Observable<DiaryDraftDataModel[]> getDiaryDrafts(@Query("pageSize") int pageSize, @Query("offset") int offset);
 
-    /** posting diary entry with relation to user:
-     * 1. add entry POST "/data/diaryEntries" @Body Json object
-     * {
-     "entries": "{json Array}",
-     "EntryDate": 1505077200000
-     }
-     * 2. add relation POST "/data/diaryEntries/{entry objectId}/userId @Body ["[user objectId]"]
+    /**
+     * save diary entry
+     * @param token saved to SharedPrefs after login
+     * @param diaryEntry
+     * @return
      */
-    @POST("/data/diaryEntries")
-    Observable<DiaryEntryDataModel> saveDiaryEntry(@Body DiaryEntryDataModel diaryEntry);
 
-    @POST("/data/diaryEntries/{diaryEntryId}/userId")
-    Observable<Integer> bindUserToDiaryEntry(@Path("diaryEntryId") String diaryEntryId, @Body String[] userId );
+    @POST("data/diaryEntries")
+    Observable<DiaryEntryDataModel> saveDiaryEntry(@Header("user-token") String token, @Body DiaryEntryDataModel diaryEntry);
 
-    // get all data entries related to user with such email
-    // data/diaryEntries?where=userId.email='lililala1991@gmail.com'
+    /**
+     * return all rows with ownerId of currently authenticated user
+     * @param token saved to SharedPrefs after login
+     */
     @GET("data/diaryEntries?sortBy=entryDate%20desc")
-    Observable<DiaryEntryDataModel[]> getDiaryEntries(@Query("where") String condition);
+    Observable<DiaryEntryDataModel[]> getDiaryEntries(@Header("user-token") String token);
 }

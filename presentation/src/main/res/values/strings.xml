@@ -34,4 +34,7 @@
     <string name="btn_save">save</string>
     <string name="msg_unknown_error">Unknown error</string>
     <string name="msg_confirm_email">Confirm your registration by clicking link in email we sent you, then you\'ll be able to login</string>
+    <string name="btn_remove_edittext">Remove EditText</string>
+    <string name="btn_add_edittext">Add EditText</string>
+    <string name="btn_exit_without_save">Exit without save</string>
 </resources>

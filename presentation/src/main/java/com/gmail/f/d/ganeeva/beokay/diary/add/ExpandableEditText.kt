@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.text.TextUtils
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
@@ -46,59 +47,48 @@ class ExpandableEditText : ExpandableRelativeLayout {
                 attrs, R.styleable.ExpandableEditText, 0, 0)
         val text = a.getString(R.styleable.ExpandableEditText_text)
         setEditText(text)
-        expandable.setListener(ExpandCollapseListener())
-    }
-
-    override fun setListener(listener: ExpandableLayoutListener) {
-        super.setListener(ExpandCollapseListener(listener))
+        super.setListener(listener)
     }
 
     fun setEditText(text: String?) {
-        if (TextUtils.isEmpty(text)) editText.setText("") else editText.setText(text)
+        if (TextUtils.isEmpty(text))
+            editText.setText("")
+        else editText.setText(text)
     }
 
     fun getEditText() : String {
         return editText.text.toString()
     }
 
-    inner class ExpandCollapseListener : ExpandableLayoutListener {
+    // listener methods not invoked somehow
 
-        // lib accepts only one listener
-        // outer listener invoked inside this
-        var additionalListener : ExpandableLayoutListener? = null
 
-        constructor(additionalListener: ExpandableLayoutListener) {
-            this.additionalListener = additionalListener
+
+    /**
+     * listener for binding availability of removeItemButton
+     * to visibility of concrete item
+     */
+    private val listener = object : ExpandableLayoutListener {
+        override fun onAnimationStart() {}
+        override fun onAnimationEnd() {}
+        override fun onPreOpen() {}
+        override fun onPreClose() {}
+
+        // show when opened
+        override fun onOpened() {
+            outerListener?.onOpened() ?: return
         }
 
-        constructor()
-
-        /**
-         * clean edittext if collapsed
-         */
+        // hide when closed
         override fun onClosed() {
             setEditText("");
-            if (additionalListener != null) additionalListener!!.onClosed()
+            outerListener?.onClosed() ?: return
         }
+    }
 
+    var outerListener : ExpandableLayoutListener? = null
 
-        override fun onOpened() {
-            if (additionalListener != null) additionalListener!!.onOpened()
-        }
-
-        override fun onAnimationEnd() {
-            if (additionalListener != null) additionalListener!!.onAnimationEnd()
-        }
-
-        override fun onAnimationStart() {
-            if (additionalListener != null) additionalListener!!.onAnimationStart()
-        }
-
-        override fun onPreOpen() {
-            if (additionalListener != null) additionalListener!!.onPreOpen()
-        }
-
-        override fun onPreClose() {
-            if (additionalListener != null) additionalListener!!.onPreClose()}
+    fun setAdditionalListener(outerListener : ExpandableLayoutListener) {
+        this.outerListener = outerListener
     }
 }

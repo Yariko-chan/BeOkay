@@ -33,6 +33,9 @@ import kotlinx.android.synthetic.main.fragment_diary_add.*
 
 class AddDiaryEntryFragment : BaseDialogFragment() {
 
+    // expandable strings
+    private var items = arrayOf<ExpandableEditText>();
+
     /**
      * inflating view, binding viewModel
      */
@@ -54,11 +57,15 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        items = arrayOf(
+                item4_expandable, item5_expandable, item6_expandable, item7_expandable,
+                item8_expandable, item9_expandable, item10_expandable)
+
         addItemButton.setOnClickListener{ addEditText() }
         removeItemButton.setOnClickListener{ removeLastEditText() }
 
-        item4_expandable.setListener(removeButtonAvailability) // button available if 4th item expanded
-        item10_expandable.setListener(addButtonAvailability) // button available if 10h item collapsed
+        item4_expandable.setAdditionalListener(removeButtonAvailability) // button available if 4th item expanded
+        item10_expandable.setAdditionalListener(addButtonAvailability) // button available if 10h item collapsed
 
         addItemFromDrafts.setOnClickListener{ openDrafts() }
     }
@@ -96,12 +103,6 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
      * showing first hidden item in range 4..10
      */
     private fun addEditText() {
-        if (!item4_expandable.isExpanded) {
-            item4_expandable.expand()
-            return
-        }
-        val items = arrayOf( item5_expandable, item6_expandable, item7_expandable,
-                item8_expandable, item9_expandable, item10_expandable)
         for (item in items) {
             if (!item.isExpanded) {
                 item.expand()
@@ -114,17 +115,13 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
      * hiding last visible item in range 4..10
      */
     private fun removeLastEditText() {
-        val items = arrayOf(item5_expandable, item6_expandable, item7_expandable,
+        val items = arrayOf(item4_expandable, item5_expandable, item6_expandable, item7_expandable,
                 item8_expandable, item9_expandable, item10_expandable)
         for (item in items.reversedArray()) {
             if (item.isExpanded) {
                 item.collapse()
                 return
             }
-        }
-        if (item4_expandable.isExpanded) {
-            item4_expandable.collapse()
-            return
         }
     }
 

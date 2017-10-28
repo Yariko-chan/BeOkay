@@ -13,7 +13,6 @@ import javax.inject.Inject
 
 class LauncherActivity : Activity() {
 
-
     @Inject lateinit var useCase: ValidateLoginUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {

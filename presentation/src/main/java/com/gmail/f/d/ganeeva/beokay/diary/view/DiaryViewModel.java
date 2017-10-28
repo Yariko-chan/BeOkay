@@ -11,6 +11,7 @@ import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
 import com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryFragment;
 import com.gmail.f.d.ganeeva.beokay.diary.view.list_item.DiaryItemViewHolder;
+import com.gmail.f.d.ganeeva.beokay.general.Authorization;
 import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.domain.entity.DiaryEntryDomainModel;
 import com.gmail.f.d.ganeeva.domain.interactions.diary.GetDiaryEntriesUseCase;
@@ -52,9 +53,8 @@ public class DiaryViewModel implements BaseViewModel {
 
     @Override
     public void resume() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(applicationContext);
-        String email = sharedPref.getString(applicationContext.getString(R.string.settings_saved_email_key), "");
-        useCase.execute(email, new DisposableObserver<List<? extends DiaryEntryDomainModel>>() {
+        String token =  Authorization.getInstance(applicationContext).getUserToken();
+        useCase.execute(token, new DisposableObserver<List<? extends DiaryEntryDomainModel>>() {
             @Override
             public void onNext(@NonNull List<? extends DiaryEntryDomainModel> diaryEntryList) {
                 Log.d(TAG, "Diary entries received, count = " + diaryEntryList.size() );
