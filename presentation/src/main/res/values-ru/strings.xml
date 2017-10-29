@@ -47,4 +47,7 @@
     <string name="btn_exit_without_save">Выйти без сохранения</string>
     <string name="msg_diary_entry_not_saved">Запись в дневнике не сохранена</string>
     <string name="error_min_three">Заполни хотя бы три поля!</string>
+    <string name="select_diary_draft">Возможно, какие-то из этих идей?</string>
+    <string name="ok">Ок</string>
+    <string name="cancel">Выход</string>
 </resources>

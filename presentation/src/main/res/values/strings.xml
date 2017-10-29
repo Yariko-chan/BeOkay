@@ -39,4 +39,7 @@
     <string name="btn_exit_without_save">Exit without save</string>
     <string name="msg_diary_entry_not_saved">Diary entry isn\'t saved</string>
     <string name="error_min_three">Fill at least 3 fields!</string>
+    <string name="select_diary_draft">Maybe this will give you ideas.</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
 </resources>

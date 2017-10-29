@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="android.view.View"/>
 
@@ -7,31 +7,56 @@
             name="viewModel"
             type="com.gmail.f.d.ganeeva.beokay.diary.add.drafts.DiaryDraftsViewModel"/>
     </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
                   android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
-        android:background="@color/colorIcons">
+                  android:background="@color/colorIcons">
 
-        <android.support.v7.widget.Toolbar
+        <TextView
+            android:id="@+id/textView"
+            style="@style/PrimaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:id="@+id/toolbar">
-        </android.support.v7.widget.Toolbar>
+            android:layout_alignParentTop="true"
+            android:layout_margin="15dp"
+            android:text="@string/select_diary_draft"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_above="@+id/ok"
+            android:gravity="center"
+            android:visibility="@{viewModel.haveData ? View.GONE : View.VISIBLE}"
+            android:layout_centerInParent="true"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/draftsList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_above="@+id/cancel"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/colorIcons"
             android:visibility="@{viewModel.haveData ? View.VISIBLE : View.GONE}"
-            ></android.support.v7.widget.RecyclerView>
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="@{viewModel.haveData ? View.GONE : View.VISIBLE}"
             />
-    </LinearLayout>
+
+        <Button
+            android:id="@+id/ok"
+            style="@style/FlatButton"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/ok"/>
+
+        <Button
+            android:id="@+id/cancel"
+            style="@style/FlatButton"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/ok"
+            android:layout_toStartOf="@+id/ok"
+            android:text="@string/cancel"/>
+    </RelativeLayout>
 </layout>
