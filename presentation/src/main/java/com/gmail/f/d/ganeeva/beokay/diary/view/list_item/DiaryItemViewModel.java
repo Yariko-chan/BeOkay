@@ -5,8 +5,6 @@ import android.databinding.ObservableField;
 import com.gmail.f.d.ganeeva.beokay.base.BaseItemViewModel;
 import com.gmail.f.d.ganeeva.domain.entity.DiaryEntryDomainModel;
 
-import io.reactivex.Observable;
-
 /**
  * Created by Diana on 27.09.2017 at 8:00.
  */
@@ -17,7 +15,7 @@ public class DiaryItemViewModel extends BaseItemViewModel<DiaryEntryDomainModel>
 
     @Override
     public void setItem(DiaryEntryDomainModel diaryEntry, int position) {
-        date.set(diaryEntry.getEntryDate());
+        date.set(diaryEntry.getEntryDateString());
         items.set(diaryEntry.getItems());
     }
 }

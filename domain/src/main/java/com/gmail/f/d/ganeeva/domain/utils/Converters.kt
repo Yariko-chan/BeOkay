@@ -1,14 +1,11 @@
 package com.gmail.f.d.ganeeva.domain.utils
 
-import android.util.Log
 import com.gmail.f.d.ganeeva.data.entity.AuthDataModel
 import com.gmail.f.d.ganeeva.data.entity.DiaryEntryDataModel
 import com.gmail.f.d.ganeeva.data.entity.UserDataModel
 import com.gmail.f.d.ganeeva.domain.entity.AuthDomainModel
 import com.gmail.f.d.ganeeva.domain.entity.DiaryEntryDomainModel
 import com.gmail.f.d.ganeeva.domain.entity.UserDomainModel
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -44,11 +41,13 @@ fun convertAuthToData(domainModel: AuthDomainModel): AuthDataModel {
 fun convertDiaryEntryDataToDomain(dataModel: DiaryEntryDataModel): DiaryEntryDomainModel {
     val domainModel = DiaryEntryDomainModel()
     // date
+    domainModel.entryDateTimestamp = dataModel.dateTimestamp
+
     // timestamp -> string(format 22/3/2017)
     val date =  Date(dataModel.dateTimestamp);
     val sdf = SimpleDateFormat("dd/MM/yyyy")
     val dateString = sdf.format(date)
-    domainModel.entryDate = dateString
+    domainModel.entryDateString = dateString
 
     // items
     domainModel.items = dataModel.itemsJson;
