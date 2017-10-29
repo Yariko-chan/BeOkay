@@ -38,4 +38,5 @@
     <string name="btn_add_edittext">Add EditText</string>
     <string name="btn_exit_without_save">Exit without save</string>
     <string name="msg_diary_entry_not_saved">Diary entry isn\'t saved</string>
+    <string name="error_min_three">Fill at least 3 fields!</string>
 </resources>

@@ -1,16 +1,12 @@
 package com.gmail.f.d.ganeeva.beokay.diary.view;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
-import com.gmail.f.d.ganeeva.beokay.diary.OnDataChangedListener;
-import com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryFragment;
+import com.gmail.f.d.ganeeva.beokay.general.OnDataChangedListener;
 import com.gmail.f.d.ganeeva.beokay.diary.view.list_item.DiaryItemViewHolder;
 import com.gmail.f.d.ganeeva.beokay.general.Authorization;
 import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;

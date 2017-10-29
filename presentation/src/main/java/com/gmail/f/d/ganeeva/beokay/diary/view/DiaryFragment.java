@@ -1,8 +1,5 @@
 package com.gmail.f.d.ganeeva.beokay.diary.view;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,16 +12,11 @@ import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseFragment;
 import com.gmail.f.d.ganeeva.beokay.databinding.FragmentDiaryBinding;
 import com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryFragment;
-import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
-
-import javax.inject.Inject;
 
 public class DiaryFragment extends BaseFragment {
 
     private FragmentDiaryBinding binding;
     private DiaryViewModel diaryViewModel = new DiaryViewModel();
-
-    @Inject BeOkayApplication application;
 
     public DiaryFragment() {
     }
@@ -32,8 +24,6 @@ public class DiaryFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        BeOkayApplication.appComponent.inject(this);
     }
 
     @Override
@@ -67,14 +57,6 @@ public class DiaryFragment extends BaseFragment {
                 }
             });
         }
-
-        application.setDataChangeListener(diaryViewModel);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        application.removeDataChangeListener();
     }
 
     /**

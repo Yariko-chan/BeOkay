@@ -2,7 +2,6 @@ package com.gmail.f.d.ganeeva.beokay.general;
 
 import android.app.Application;
 
-import com.gmail.f.d.ganeeva.beokay.diary.OnDataChangedListener;
 import com.gmail.f.d.ganeeva.beokay.general.di.AppComponent;
 import com.gmail.f.d.ganeeva.beokay.general.di.DaggerAppComponent;
 import com.gmail.f.d.ganeeva.beokay.general.di.modules.ApplicationModule;

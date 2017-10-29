@@ -7,6 +7,7 @@ import com.gmail.f.d.ganeeva.beokay.diary.add.AddDiaryEntryViewModel;
 import com.gmail.f.d.ganeeva.beokay.diary.view.DiaryFragment;
 import com.gmail.f.d.ganeeva.beokay.diary.view.DiaryViewModel;
 import com.gmail.f.d.ganeeva.beokay.diary.add.drafts.DiaryDraftsViewModel;
+import com.gmail.f.d.ganeeva.beokay.general.HomeActivity;
 import com.gmail.f.d.ganeeva.beokay.general.LauncherActivity;
 import com.gmail.f.d.ganeeva.beokay.general.di.modules.ApplicationModule;
 import com.gmail.f.d.ganeeva.beokay.general.di.modules.RestModule;
@@ -39,5 +40,5 @@ public interface AppComponent {
 
     void inject(AddDiaryEntryViewModel settingsFragment);
 
-    void inject(DiaryFragment diaryFragment);
+    void inject(HomeActivity homeActivity);
 }

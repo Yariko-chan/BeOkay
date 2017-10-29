@@ -51,18 +51,16 @@ public class AddDiaryEntryViewModel implements BaseViewModel {
     public ObservableField<String> entry9 = new ObservableField<>("");
     public ObservableField<String> entry10 = new ObservableField<>("");
 
+    public ObservableBoolean min3Filled = new ObservableBoolean(true);
+
     @Inject SaveDiaryEntryUC useCase;
     @Inject Context applicationContext;
     @Inject BeOkayApplication application;
 
     private Fragment fragment;
-    private Activity activity;
 
     public AddDiaryEntryViewModel(Fragment fragment) {
         this.fragment = fragment;
-    }
-    public AddDiaryEntryViewModel(Activity activity) {
-        this.activity = activity;
     }
 
     @Override
@@ -99,6 +97,14 @@ public class AddDiaryEntryViewModel implements BaseViewModel {
             if (TextUtils.isEmpty(it.next())) {
                 it.remove();
             }
+        }
+
+        // check min 3 filled
+        if (entries.size() < 3) {
+            min3Filled.set(false);
+            return;
+        } else {
+            min3Filled.set(true);
         }
 
         // convert to json array
