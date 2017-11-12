@@ -2,10 +2,12 @@ package com.gmail.f.d.ganeeva.beokay.settings;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +53,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         });
     }
 
-    private void logout(Context context) {
+    private static void logout(Context context) {
         // set auth settings
         Authorization auth = Authorization.getInstance(context);
         auth.setIsAuthorized(context, false);

@@ -4,4 +4,8 @@
         android:key="@string/settings_saved_email_key"
         android:title="@string/settings_logout">
     </com.gmail.f.d.ganeeva.beokay.settings.DefaultValuePreference>
+    <com.gmail.f.d.ganeeva.beokay.settings.DefaultValuePreference
+        android:key="@string/settings_version_key"
+        android:title="@string/version">
+    </com.gmail.f.d.ganeeva.beokay.settings.DefaultValuePreference>
 </PreferenceScreen>

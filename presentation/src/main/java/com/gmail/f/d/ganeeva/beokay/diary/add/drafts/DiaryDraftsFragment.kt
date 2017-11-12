@@ -22,16 +22,21 @@ import android.view.WindowManager
  */
 
 class DiaryDraftsFragment : BaseDialogFragment() {
+    var draftsListener: OnDraftsSelectedListener? = null
+    set(value) {
+        field = value
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val draftsViewModel = DiaryDraftsViewModel()
+        val draftsViewModel = DiaryDraftsViewModel(this)
+        draftsViewModel.setListener(draftsListener)
         this.viewModel = draftsViewModel
         val binding : FragmentDiaryDraftsBinding = DataBindingUtil.inflate<FragmentDiaryDraftsBinding>(inflater,
                 R.layout.fragment_diary_drafts, container, false)
         binding.viewModel = draftsViewModel
         binding.draftsList.setLayoutManager(LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false))
-        binding.draftsList.adapter = draftsViewModel.adapter
+        binding.draftsList.adapter = draftsViewModel?.adapter
 
         super.onCreateView(inflater, container, savedInstanceState)
         return binding.root

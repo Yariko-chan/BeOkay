@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.base.BaseDialogFragment;
 import com.gmail.f.d.ganeeva.beokay.base.BaseViewModel;
+import com.gmail.f.d.ganeeva.beokay.diary.add.drafts.OnDraftsSelectedListener;
 import com.gmail.f.d.ganeeva.beokay.general.Authorization;
 import com.gmail.f.d.ganeeva.beokay.general.BeOkayApplication;
 import com.gmail.f.d.ganeeva.domain.entity.DiaryEntryDomainModel;
@@ -37,7 +38,7 @@ import io.reactivex.observers.DisposableObserver;
  * Created by Diana on 17.09.2017 at 9:41.
  */
 
-public class AddDiaryEntryViewModel implements BaseViewModel {
+public class AddDiaryEntryViewModel implements BaseViewModel, OnDraftsSelectedListener{
     private static final String TAG = AddDiaryEntryViewModel.class.getSimpleName();
 
     public ObservableField<String> entry1 = new ObservableField<>("");
@@ -135,5 +136,26 @@ public class AddDiaryEntryViewModel implements BaseViewModel {
 
     public void exit() {
         fragment.getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+    }
+
+    @Override
+    public void onDraftsSelected(List<String> drafts) {
+        ArrayList<ObservableField<String>> fields = new ArrayList<>(10);
+        fields.add(entry1);
+        fields.add(entry2);
+        fields.add(entry3);
+        fields.add(entry4);
+        fields.add(entry5);
+        fields.add(entry6);
+        fields.add(entry7);
+        fields.add(entry8);
+        fields.add(entry9);
+        fields.add(entry10);
+        int i = 0;
+        while (drafts.size() > i && fields.size() > i) {
+            fields.get(i).set(drafts.get(i));
+            i++;
+        }
+        Log.d("", "");
     }
 }

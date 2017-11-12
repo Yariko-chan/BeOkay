@@ -42,4 +42,6 @@
     <string name="select_diary_draft">Maybe this will give you ideas.</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="version">Version</string>
+    <string name="settings_version_key">Version</string>
 </resources>

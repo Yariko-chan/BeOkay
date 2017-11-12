@@ -14,6 +14,7 @@ import com.gmail.f.d.ganeeva.beokay.R
 import com.gmail.f.d.ganeeva.beokay.base.BaseDialogFragment
 import com.gmail.f.d.ganeeva.beokay.databinding.FragmentDiaryAddBinding
 import com.gmail.f.d.ganeeva.beokay.diary.add.drafts.DiaryDraftsFragment
+import com.gmail.f.d.ganeeva.beokay.setListener
 import kotlinx.android.synthetic.main.fragment_diary_add.*
 
 /**
@@ -33,6 +34,8 @@ import kotlinx.android.synthetic.main.fragment_diary_add.*
 
 class AddDiaryEntryFragment : BaseDialogFragment() {
 
+    var addDiaryEntryViewModel : AddDiaryEntryViewModel? = null
+
     // expandable strings
     private var items = arrayOf<ExpandableEditText>();
 
@@ -41,7 +44,7 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val addDiaryEntryViewModel = AddDiaryEntryViewModel(this)
+        addDiaryEntryViewModel = AddDiaryEntryViewModel(this)
         this.viewModel = addDiaryEntryViewModel
         val binding : FragmentDiaryAddBinding = DataBindingUtil.inflate<FragmentDiaryAddBinding>(inflater,
                 R.layout.fragment_diary_add, container, false)
@@ -72,6 +75,7 @@ class AddDiaryEntryFragment : BaseDialogFragment() {
 
     private fun openDrafts() {
         val fragment = DiaryDraftsFragment()
+        fragment.draftsListener = addDiaryEntryViewModel
         fragment.show(fragmentManager, "DRAFTS")
     }
 
