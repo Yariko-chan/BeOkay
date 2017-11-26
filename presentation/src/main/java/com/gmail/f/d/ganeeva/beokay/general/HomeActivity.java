@@ -16,7 +16,7 @@ import com.gmail.f.d.ganeeva.beokay.diary.view.DiaryFragment;
 import com.gmail.f.d.ganeeva.beokay.R;
 import com.gmail.f.d.ganeeva.beokay.schedule.ScheduleFragment;
 import com.gmail.f.d.ganeeva.beokay.settings.SettingsFragment;
-import com.gmail.f.d.ganeeva.beokay.training.TrainingFragment;
+import com.gmail.f.d.ganeeva.beokay.articles.ArticlesFragment;
 
 import javax.inject.Inject;
 
@@ -72,7 +72,7 @@ public class HomeActivity extends FragmentActivity implements OnDataChangedListe
             }
             case R.id.action_training: {
                 backToExitPressedOnce = false;
-                showFragment(fragmentManager, new TrainingFragment());
+                showFragment(fragmentManager, new ArticlesFragment());
                 return true;
             }
             case R.id.action_settings: {

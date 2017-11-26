@@ -1,5 +1,6 @@
 package com.gmail.f.d.ganeeva.data.net;
 
+import com.gmail.f.d.ganeeva.data.entity.ArticleDataModel;
 import com.gmail.f.d.ganeeva.data.entity.AuthDataModel;
 import com.gmail.f.d.ganeeva.data.entity.DiaryDraftDataModel;
 import com.gmail.f.d.ganeeva.data.entity.DiaryEntryDataModel;
@@ -39,7 +40,6 @@ public class RestService {
     }
 
     public Observable<DiaryDraftDataModel[]> getDiaryDrafts(int pageSize, int offset) {
-        Observable<DiaryDraftDataModel[]> drafts = Observable.just(new DiaryDraftDataModel[0]);
         return restAPI.getDiaryDrafts(pageSize, offset);
     }
 
@@ -49,5 +49,9 @@ public class RestService {
 
     public Observable<DiaryEntryDataModel> saveDiaryEntry(DiaryEntryDataModel diaryEntry, String token) {
         return restAPI.saveDiaryEntry(token, diaryEntry);
+    }
+
+    public Observable<ArticleDataModel[]> getArticles(int pageSize, int offset) {
+        return restAPI.getArticles(pageSize, offset);
     }
 }

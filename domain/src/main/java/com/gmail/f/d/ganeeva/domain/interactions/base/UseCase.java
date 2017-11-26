@@ -1,5 +1,7 @@
 package com.gmail.f.d.ganeeva.domain.interactions.base;
 
+import com.gmail.f.d.ganeeva.data.net.RestService;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

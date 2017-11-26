@@ -1,6 +1,7 @@
 package com.gmail.f.d.ganeeva.beokay.general.di.modules;
 
 import com.gmail.f.d.ganeeva.data.net.RestService;
+import com.gmail.f.d.ganeeva.domain.interactions.GetArticlesUseCase;
 import com.gmail.f.d.ganeeva.domain.interactions.auth.LoginUseCase;
 import com.gmail.f.d.ganeeva.domain.interactions.auth.RecoverPasswordUseCase;
 import com.gmail.f.d.ganeeva.domain.interactions.auth.RegisterUseCase;
@@ -49,5 +50,10 @@ public class UseCaseModule {
     @Provides
     public SaveDiaryEntryUC provideSaveDiaryUC(RestService restService) {
         return new SaveDiaryEntryUC(restService);
+    }
+
+    @Provides
+    public GetArticlesUseCase provideArticlesUC(RestService restService) {
+        return new GetArticlesUseCase(restService);
     }
 }

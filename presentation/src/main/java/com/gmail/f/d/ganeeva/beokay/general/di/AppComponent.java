@@ -1,5 +1,6 @@
 package com.gmail.f.d.ganeeva.beokay.general.di;
 
+import com.gmail.f.d.ganeeva.beokay.articles.ArticlesViewModel;
 import com.gmail.f.d.ganeeva.beokay.authorization.login.LoginViewModel;
 import com.gmail.f.d.ganeeva.beokay.authorization.password_recovery.RecoverPasswordViewModel;
 import com.gmail.f.d.ganeeva.beokay.authorization.register.RegisterViewModel;
@@ -41,4 +42,6 @@ public interface AppComponent {
     void inject(AddDiaryEntryViewModel settingsFragment);
 
     void inject(HomeActivity homeActivity);
+
+    void inject(ArticlesViewModel articlesViewModel);
 }

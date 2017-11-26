@@ -1,8 +1,10 @@
 package com.gmail.f.d.ganeeva.domain.utils
 
+import com.gmail.f.d.ganeeva.data.entity.ArticleDataModel
 import com.gmail.f.d.ganeeva.data.entity.AuthDataModel
 import com.gmail.f.d.ganeeva.data.entity.DiaryEntryDataModel
 import com.gmail.f.d.ganeeva.data.entity.UserDataModel
+import com.gmail.f.d.ganeeva.domain.entity.ArticleDomainModel
 import com.gmail.f.d.ganeeva.domain.entity.AuthDomainModel
 import com.gmail.f.d.ganeeva.domain.entity.DiaryEntryDomainModel
 import com.gmail.f.d.ganeeva.domain.entity.UserDomainModel
@@ -52,5 +54,12 @@ fun convertDiaryEntryDataToDomain(dataModel: DiaryEntryDataModel): DiaryEntryDom
     // items
     domainModel.items = dataModel.itemsJson;
 
+    return domainModel
+}
+
+fun convertArticleDataToDomain(dataModel: ArticleDataModel) : ArticleDomainModel {
+    val domainModel = ArticleDomainModel()
+    domainModel.text = dataModel.text
+    domainModel.title = dataModel.title
     return domainModel
 }

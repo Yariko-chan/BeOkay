@@ -1,5 +1,6 @@
 package com.gmail.f.d.ganeeva.data.net;
 
+import com.gmail.f.d.ganeeva.data.entity.ArticleDataModel;
 import com.gmail.f.d.ganeeva.data.entity.AuthDataModel;
 import com.gmail.f.d.ganeeva.data.entity.DiaryDraftDataModel;
 import com.gmail.f.d.ganeeva.data.entity.DiaryEntryDataModel;
@@ -31,7 +32,7 @@ public interface RestAPI {
     @GET("users/isvalidusertoken/{userToken}")
     Observable<Boolean> validateLogin(@Path("userToken") String userToken);
 
-    @GET("data/DiaryDrafts")
+    @GET("data/diary_drafts")
     Observable<DiaryDraftDataModel[]> getDiaryDrafts(@Query("pageSize") int pageSize, @Query("offset") int offset);
 
     /**
@@ -41,13 +42,16 @@ public interface RestAPI {
      * @return
      */
 
-    @POST("data/diaryEntries")
+    @POST("data/diary_entries")
     Observable<DiaryEntryDataModel> saveDiaryEntry(@Header("user-token") String token, @Body DiaryEntryDataModel diaryEntry);
 
     /**
      * return all rows with ownerId of currently authenticated user
      * @param token saved to SharedPrefs after login
      */
-    @GET("data/diaryEntries?sortBy=entryDate%20desc")
+    @GET("data/diary_entries?sortBy=entryDate%20desc")
     Observable<DiaryEntryDataModel[]> getDiaryEntries(@Header("user-token") String token);
+
+    @GET("data/Articles?sortBy=num")
+    Observable<ArticleDataModel[]> getArticles(@Query("pageSize") int pageSize, @Query("offset") int offset);
 }

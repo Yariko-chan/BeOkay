@@ -43,5 +43,6 @@
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
     <string name="version">Version</string>
-    <string name="settings_version_key">Version</string>
+    <string name="settings_version_key" translatable="false">Version</string>
+    <string name="error_loading_articles">Error loading articles</string>
 </resources>
